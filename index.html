@@ -478,71 +478,154 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 
 /* ─── EXPERIENCE ─── */
 #experience { background: var(--bg); }
-.timeline { max-width: 780px; }
-.timeline-item {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: var(--space-8);
-  margin-bottom: var(--space-12);
+.timeline {
   position: relative;
+  max-width: 980px;
+  margin-inline: auto;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-2);
 }
-@media (max-width: 580px) { .timeline-item { grid-template-columns: 1fr; gap: var(--space-3); } }
-.timeline-item:not(:last-child)::after {
-  content: '';
+.timeline::before {
+  content: "";
   position: absolute;
-  left: 149px; top: 20px; bottom: -3rem;
+  left: 50%;
+  top: 0;
+  bottom: 0;
   width: 1px;
-  background: var(--border);
+  background: color-mix(in oklab, var(--text) 10%, transparent);
+  transform: translateX(-50%);
 }
-@media (max-width: 580px) { .timeline-item::after { display: none; } }
+.timeline-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-bottom: clamp(var(--space-12), 10vw, 8rem);
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item:nth-child(odd) {
+  justify-content: flex-end;
+  padding-right: calc(50% + var(--space-6));
+}
+.timeline-item:nth-child(even) {
+  justify-content: flex-start;
+  padding-left: calc(50% + var(--space-6));
+}
 .timeline-dot {
-  position: absolute; left: 143px; top: 4px;
-  width: 12px; height: 12px;
+  position: absolute;
+  left: 50%;
+  top: 2rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--surface) 86%, var(--bg));
+  border: 1px solid color-mix(in oklab, var(--text) 8%, transparent);
+  box-shadow: var(--shadow-sm);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.timeline-dot::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 30%, transparent);
+  transform: translate(-50%, -50%);
 }
-@media (max-width: 580px) { .timeline-dot { display: none; } }
+.timeline-card {
+  width: min(100%, 29rem);
+  background: var(--surface);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  border-radius: 1.125rem;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
 .timeline-date {
   font-size: var(--text-xs);
-  color: var(--text-faint);
-  text-align: right;
-  padding-top: 3px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
   line-height: 1.5;
 }
 .timeline-body h3 {
-  font-size: var(--text-base);
-  font-weight: 500; color: var(--text);
-  margin-bottom: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.15rem;
 }
 .timeline-company {
-  font-size: var(--text-sm); color: var(--accent);
-  margin-bottom: var(--space-3); font-weight: 400;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+  font-weight: 400;
+  line-height: 1.55;
 }
 .timeline-desc {
-  font-size: var(--text-sm); color: var(--text-muted);
-  line-height: 1.8; max-width: 58ch;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.72;
+  max-width: none;
 }
 .timeline-achievements {
   margin-top: var(--space-4);
-  display: flex; flex-direction: column; gap: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 .achievement {
-  display: flex; align-items: flex-start; gap: var(--space-2);
-  font-size: var(--text-sm); color: var(--text-muted);
-}
-.achievement i { color: var(--primary); flex-shrink: 0; margin-top: 3px; }
-.tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
-.tag {
-  background: var(--surface);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
   color: var(--text-muted);
-  font-size: var(--text-xs);
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--border);
+  line-height: 1.65;
+  max-width: none;
+}
+.achievement i {
+  color: color-mix(in oklab, var(--accent) 72%, var(--text));
+  flex-shrink: 0;
+  margin-top: 0.22rem;
+}
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.tag {
+  background: color-mix(in oklab, var(--surface-offset) 88%, var(--bg));
+  color: color-mix(in oklab, var(--text-muted) 92%, var(--text));
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.55rem;
+  border-radius: 0.35rem;
+  border: 1px solid color-mix(in oklab, var(--text) 6%, transparent);
+  font-weight: 600;
+  line-height: 1;
+}
+@media (max-width: 820px) {
+  .timeline::before {
+    left: 1rem;
+    transform: none;
+  }
+  .timeline-item,
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: calc(var(--space-8) + var(--space-4));
+    padding-right: 0;
+    margin-bottom: var(--space-10);
+  }
+  .timeline-dot {
+    left: 1rem;
+    transform: translate(-50%, -50%);
+  }
+  .timeline-card { width: 100%; }
 }
 
 /* ─── WORK SAMPLES ─── */
@@ -1028,58 +1111,65 @@ footer a:hover { color: var(--text); }
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="container">
+  <div class="container-wide">
     <p class="eyebrow reveal">Career timeline</p>
     <h2 class="section-heading reveal">Work <em>Experience</em></h2>
     <div class="timeline">
 
       <div class="timeline-item reveal">
-        <div class="timeline-date">Jan 2026-<br>July 2026</div>
         <div class="timeline-dot"></div>
-        <div class="timeline-body">
+        <div class="timeline-card timeline-body">
+          <div class="timeline-date">Jan 2026 – Jul 2026</div>
           <h3>Customer Care Associate</h3>
           <div class="timeline-company">RealPage, Inc. · Pasig, Metro Manila</div>
           <p class="timeline-desc">Elevated to a dedicated escalation-handling role. Worked directly with corporate management to resolve complex client issues and maintained accurate case records through Salesforce.</p>
           <div class="timeline-achievements">
-            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i> Coordinated directly with management to resolve high-priority escalations</div>
-            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i> Maintained structured case documentation through Salesforce</div>
+            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i><span>Coordinated directly with management to resolve high-priority escalations</span></div>
+            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i><span>Maintained structured case documentation through Salesforce</span></div>
           </div>
           <div class="tag-row">
-            <span class="tag">Salesforce</span><span class="tag">Escalation Handling</span>
-            <span class="tag">Case Management</span><span class="tag">Client Relations</span>
+            <span class="tag">Salesforce</span>
+            <span class="tag">Escalation Handling</span>
+            <span class="tag">Case Management</span>
+            <span class="tag">Client Relations</span>
           </div>
         </div>
       </div>
 
       <div class="timeline-item reveal">
-        <div class="timeline-date">Sep 2024-<br>July 2026</div>
         <div class="timeline-dot"></div>
-        <div class="timeline-body">
+        <div class="timeline-card timeline-body">
+          <div class="timeline-date">Sep 2024 – Jul 2026</div>
           <h3>Contact Center Associate I</h3>
           <div class="timeline-company">RealPage, Inc. · Pasig, Metro Manila</div>
           <p class="timeline-desc">Handled inbound maintenance calls and appointment setting for residential leasing prospects. Worked across Genesys Cloud, Salesforce, and property management CRMs to support multifamily real estate clients.</p>
           <div class="timeline-achievements">
-            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i> Appointment setting for leasing prospects at residential properties</div>
-            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i> Maintenance call handling with high documentation accuracy</div>
-            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i> Worked across multiple property management CRM systems</div>
+            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i><span>Appointment setting for leasing prospects at residential properties</span></div>
+            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i><span>Maintenance call handling with high documentation accuracy</span></div>
+            <div class="achievement"><i data-lucide="check" style="width:14px;height:14px;"></i><span>Worked across multiple property management CRM systems</span></div>
           </div>
           <div class="tag-row">
-            <span class="tag">Genesys Cloud</span><span class="tag">Salesforce</span>
-            <span class="tag">Appointment Setting</span><span class="tag">Maintenance Coordination</span>
-            <span class="tag">Microsoft 365</span><span class="tag">SharePoint</span>
+            <span class="tag">Genesys Cloud</span>
+            <span class="tag">Salesforce</span>
+            <span class="tag">Appointment Setting</span>
+            <span class="tag">Maintenance Coordination</span>
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">SharePoint</span>
           </div>
         </div>
       </div>
 
       <div class="timeline-item reveal">
-        <div class="timeline-date">Jul 2024-<br>Sep 2024</div>
         <div class="timeline-dot"></div>
-        <div class="timeline-body">
+        <div class="timeline-card timeline-body">
+          <div class="timeline-date">Jul 2024 – Sep 2024</div>
           <h3>Customer Service Representative</h3>
           <div class="timeline-company">Sutherland · Mandaluyong, NCR</div>
           <p class="timeline-desc">Handled chat support for a sports streaming startup. Built foundational experience in high-volume digital support environments.</p>
           <div class="tag-row">
-            <span class="tag">Salesforce</span><span class="tag">Chat Support</span><span class="tag">BPO</span>
+            <span class="tag">Salesforce</span>
+            <span class="tag">Chat Support</span>
+            <span class="tag">BPO</span>
           </div>
         </div>
       </div>
