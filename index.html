@@ -324,6 +324,25 @@ nav {
 }
 .stat-label { font-size: var(--text-xs); color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
 
+/* ─── HERO ENTRANCE ─── */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * {
+  animation: rise-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.16s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.30s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.44s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.58s; }
+.hero-photo-col img,
+.hero-photo-col .hero-photo-placeholder {
+  animation: rise-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.2s;
+}
+
 /* ─── SECTION BASE ─── */
 section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--space-6), 5vw, var(--space-16)); }
 .eyebrow {
@@ -684,8 +703,54 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
   line-height: 1.8; font-style: italic; max-width: none;
 }
 
+/* ─── TECHNICAL PROJECTS ─── */
+#projects { background: var(--bg); }
+.stack-status-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.8rem;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  transition: border-color var(--transition), color var(--transition), transform var(--transition);
+}
+.status-chip:hover {
+  border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+.status-chip-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4caf50;
+  box-shadow: 0 0 5px #4caf5080;
+  flex-shrink: 0;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.status-chip:nth-child(2n) .status-chip-dot { animation-delay: 0.4s; }
+.status-chip:nth-child(3n) .status-chip-dot { animation-delay: 0.8s; }
+.status-chip:nth-child(4n) .status-chip-dot { animation-delay: 1.2s; }
+.project-note {
+  font-size: var(--text-xs);
+  color: var(--text-faint);
+  line-height: 1.7;
+  border-left: 2px solid var(--border);
+  padding-left: var(--space-4);
+  max-width: 62ch;
+  margin-top: clamp(var(--space-8), 4vw, var(--space-12));
+}
+
 /* ─── MUSIC ─── */
-#music { background: var(--bg); }
+#music { background: var(--surface); }
 .music-intro {
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -813,11 +878,26 @@ footer a:hover { color: var(--text); }
 @supports (animation-timeline: scroll()) {
   .reveal {
     opacity: 0;
+    transform: translateY(18px);
     animation: fade-reveal linear both;
     animation-timeline: view();
     animation-range: entry 0% entry 55%;
   }
-  @keyframes fade-reveal { to { opacity: 1; } }
+  @keyframes fade-reveal { to { opacity: 1; transform: translateY(0); } }
+}
+
+/* ─── REDUCED MOTION ─── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero-content > *,
+  .hero-photo-col img,
+  .hero-photo-col .hero-photo-placeholder,
+  .status-dot,
+  .status-chip-dot {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 </style>
 </head>
@@ -833,6 +913,7 @@ footer a:hover { color: var(--text); }
       <li><a href="#tools">Tools</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#samples">Samples</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#music">Music</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1105,6 +1186,25 @@ footer a:hover { color: var(--text); }
 
       </div>
 
+      <div class="tool-group reveal">
+        <div class="tool-group-label">Linux & Self-Hosting</div>
+        <div class="tool-item">
+          <div class="tool-logo"><i data-lucide="terminal" style="width:16px;height:16px;"></i></div>
+          <span class="tool-name">Linux (Ubuntu) & Bash</span>
+          <span class="tool-level">Comfortable</span>
+        </div>
+        <div class="tool-item">
+          <div class="tool-logo"><i data-lucide="box" style="width:16px;height:16px;"></i></div>
+          <span class="tool-name">Docker & Portainer</span>
+          <span class="tool-level">Hands-On</span>
+        </div>
+        <div class="tool-item">
+          <div class="tool-logo"><i data-lucide="network" style="width:16px;height:16px;"></i></div>
+          <span class="tool-name">Caddy & Tailscale</span>
+          <span class="tool-level">Hands-On</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1221,6 +1321,69 @@ footer a:hover { color: var(--text); }
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- TECHNICAL PROJECTS -->
+<section id="projects">
+  <div class="container-wide">
+    <p class="eyebrow reveal">Independent technical project</p>
+    <h2 class="section-heading reveal">Self-Hosted <em>Infrastructure</em></h2>
+    <p class="samples-note reveal">Outside of client-facing work, I built and maintain a self-hosted Ubuntu server at home — real Linux administration, container management, and incident troubleshooting, entirely self-directed.</p>
+    <div class="samples-grid">
+
+      <div class="sample-card reveal">
+        <div class="sample-header">
+          <div class="sample-header-icon"><i data-lucide="server" style="width:18px;height:18px;"></i></div>
+          <div>
+            <div class="sample-type">Infrastructure Project</div>
+            <div class="sample-title">Self-Hosted Ubuntu Server Running 15+ Docker Services</div>
+          </div>
+        </div>
+        <div class="sample-body">
+          <p>I administer an Ubuntu Linux server running 15+ containerized services through Portainer — photo management, cloud storage, music streaming, password management, DNS-level ad blocking, and uptime monitoring. Caddy handles reverse proxying across every service, Tailscale gives me secure remote access from anywhere, and I split persistent storage across an internal SSD and an external HDD with a mix of read-only and read/write access controls.</p>
+          <div class="stack-status-grid">
+            <span class="status-chip"><span class="status-chip-dot"></span>Immich</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Nextcloud</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Navidrome</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Vaultwarden</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>AdGuard Home</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Uptime Kuma</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Portainer</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Caddy</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Glances</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
+            <span class="tag">Portainer</span>
+            <span class="tag">Caddy</span>
+            <span class="tag">Tailscale</span>
+            <span class="tag">Linux / Ubuntu</span>
+            <span class="tag">Bash</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sample-card reveal">
+        <div class="sample-header">
+          <div class="sample-header-icon"><i data-lucide="activity" style="width:18px;height:18px;"></i></div>
+          <div>
+            <div class="sample-type">Diagnostic Deep-Dive</div>
+            <div class="sample-title">Diagnosing a Storage Alert & a Port Conflict</div>
+          </div>
+        </div>
+        <div class="sample-body">
+          <p>Two separate troubleshooting scenarios from the homelab, worked the way I'd work any escalation — methodically, one variable at a time.</p>
+          <div class="sample-scenario">
+            <div class="sample-scenario-label">What I did</div>
+            <p class="sample-text">1. Storage-performance alert — spotted rising CPU I/O-wait in Glances, cross-checked disk utilization, latency, and queue depth with iostat and iotop, correlated the timing against vmstat and dmesg, then ruled out drive failure with SMART diagnostics. 2. Docker port conflict — audited published ports with docker ps, docker inspect, and ss, then reassigned Cloud Commander off the occupied host port onto 8010.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="project-note reveal">I keep building this out because I like understanding systems end-to-end, not just the ticket in front of me — and I'd genuinely love to bring that same troubleshooting mindset to an IT support, Linux administration, or infrastructure-focused role.</p>
   </div>
 </section>
 
