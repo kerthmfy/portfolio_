@@ -1243,6 +1243,40 @@ html.menu-open, html.menu-open body { overflow: hidden; }
     0 3px 8px var(--gel-shade);
 }
 
+/* back-to-top light switch */
+.to-top {
+  position: fixed;
+  right: clamp(var(--space-4), 3vw, var(--space-8));
+  bottom: clamp(var(--space-4), 3vw, var(--space-8));
+  z-index: 250;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: var(--primary);
+  background-color: var(--surface);
+  background-image: var(--capsule);
+  border: 1px solid color-mix(in oklab, var(--primary) 32%, var(--border));
+  box-shadow:
+    inset 0 1px 0 var(--gel-edge),
+    inset 0 -1px 0 var(--card-foot),
+    var(--card-lift);
+  text-decoration: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s var(--ease-soft), transform 0.3s var(--ease-soft),
+              color 0.25s var(--ease-soft), border-color 0.25s var(--ease-soft),
+              visibility 0s 0.3s;
+}
+.to-top.is-on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.to-top:hover { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 55%, transparent); transform: translateY(-2px); }
+.to-top:active { transform: translateY(1px); box-shadow: inset 0 2px 6px var(--gel-shade); }
+
 /* content sits above the pinstripe layer */
 .hero-inner { position: relative; z-index: 1; }
 
@@ -1338,6 +1372,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   .tool-item:hover { transform: none !important; }
   .timeline.draw-init::before { transform: translateX(-50%) scaleY(1) !important; }
   .scroll-progress { display: none; }
+  .to-top { transition: none !important; }
 }
 </style>
 </head>
@@ -1893,6 +1928,12 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   </div>
 </footer>
 
+<a class="to-top" href="#home" aria-label="Back to top" aria-hidden="true" tabindex="-1">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true" focusable="false"><path d="m18 15-6-6-6 6"/></svg>
+</a>
+
 <script>
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -2028,6 +2069,7 @@ if (ham && menu) {
 (function(){
   const nav = document.querySelector('nav');
   const bar = document.querySelector('.scroll-progress');
+  const top = document.querySelector('.to-top');
   let queued = false;
   function paint(){
     const y = window.scrollY || window.pageYOffset;
@@ -2035,6 +2077,15 @@ if (ham && menu) {
     if (bar) {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    }
+    if (top) {
+      const on = y > 600;
+      if (on !== top.classList.contains('is-on')) {
+        top.classList.toggle('is-on', on);
+        top.setAttribute('aria-hidden', on ? 'false' : 'true');
+        if (on) top.removeAttribute('tabindex');
+        else top.setAttribute('tabindex', '-1');
+      }
     }
     queued = false;
   }
