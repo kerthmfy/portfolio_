@@ -45,7 +45,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   "url": "https://kerthmfy.github.io/portfolio_/",
   "image": "https://kerthmfy.github.io/portfolio_/og.png",
   "jobTitle": "IT Support Specialist & Virtual Assistant",
-  "description": "Kerth Michael Fernandez Yadao is an IT specialist and virtual assistant based in Manila, Philippines — server administration, data management, technical support and automation for small teams.",
+  "description": "Kerth Michael Fernandez Yadao is an IT support specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.",
   "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
   "sameAs": [
     "https://www.linkedin.com/in/kerthfyadao",
@@ -85,7 +85,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   --content-wide: 1160px;
 }
 
-/* Light mode — based it from its favicon:
+/* Light mode — palette sampled from favicon.png:
    navy #0B0F33 · ice #BEE2EB · bevel #87C2D6 · aqua #4DA2BF · slate #3D6685 · face #F4F4F4 */
 :root, [data-theme="light"] {
   --bg:             #f1f7f9;
@@ -108,6 +108,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   --accent-hover:   #252c58;
   --accent-hl:      rgba(11,15,51,0.07);
   --on-accent:      #f4f9fb;
+
+  /* the only hue on the page: status indicator lights */
+  --live:           #15a34a;
 
   --shadow-sm: 0 1px 3px rgba(11,15,51,0.07);
   --shadow-md: 0 4px 16px rgba(11,15,51,0.10);
@@ -136,6 +139,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   --accent-hover:   #d6e5f0;
   --accent-hl:      rgba(255,255,255,0.10);
   --on-accent:      #05081f;
+
+  --live:           #3fc047;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.35);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.45);
@@ -361,8 +366,8 @@ nav.scrolled {
 .status-dot {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px color-mix(in oklab, var(--accent) 55%, transparent);
+  background: var(--live);
+  box-shadow: 0 0 8px color-mix(in oklab, var(--live) 55%, transparent);
   animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
@@ -699,7 +704,7 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--live);
   transform: translate(-50%, -50%);
 }
 .timeline-card {
@@ -868,24 +873,14 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 .status-chip-dot {
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 6px color-mix(in oklab, var(--accent) 55%, transparent);
+  background: var(--live);
+  box-shadow: 0 0 6px color-mix(in oklab, var(--live) 55%, transparent);
   flex-shrink: 0;
   animation: pulse-dot 2s ease-in-out infinite;
 }
 .status-chip:nth-child(2n) .status-chip-dot { animation-delay: 0.4s; }
 .status-chip:nth-child(3n) .status-chip-dot { animation-delay: 0.8s; }
 .status-chip:nth-child(4n) .status-chip-dot { animation-delay: 1.2s; }
-.project-note {
-  font-size: var(--text-xs);
-  color: var(--text-faint);
-  line-height: 1.7;
-  border-left: 2px solid var(--border);
-  padding-left: var(--space-4);
-  max-width: 62ch;
-  margin-top: clamp(var(--space-8), 4vw, var(--space-12));
-}
-
 /* ─── MUSIC ─── */
 #music { background: var(--surface); }
 .music-intro {
@@ -1031,8 +1026,11 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .nav-links a[aria-current="true"] { color: var(--text); }
 .nav-links a[aria-current="true"]::after { transform: scaleX(1); }
 
-/* ─── AQUA TEXTURE LAYER, like 2006 apple type stuff ─── */
-   
+/* ─── AQUA TEXTURE LAYER ───
+   A restrained nod to Apple's Aqua: gel sheen, hairline bevels and a faint
+   pinstripe. Gradients and shadows only — no images, no new dependencies.
+   The filled CTA stays legible on purpose: it is shaded darker toward the
+   bottom rather than washed white, so its white label keeps its contrast. */
 :root {
   --gel-edge:   rgba(255,255,255,0.85);
   --gel-sheen:  rgba(255,255,255,0.55);
@@ -1100,18 +1098,18 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 .btn-ghost:active { box-shadow: inset 0 2px 5px var(--gel-shade); }
 
-/* macos x leopard indicator light inspo */
+/* glossy indicator light instead of a flat dot */
 .status-dot {
   background: radial-gradient(circle at 34% 26%,
               #ffffff 0 16%,
-              color-mix(in oklab, var(--accent) 35%, #ffffff) 40%,
-              var(--accent) 78%,
-              color-mix(in oklab, var(--accent) 62%, var(--text)) 100%);
+              color-mix(in oklab, var(--live) 35%, #ffffff) 40%,
+              var(--live) 78%,
+              color-mix(in oklab, var(--live) 62%, #0a2a12) 100%);
   box-shadow:
     inset 0 -1px 1px color-mix(in oklab, var(--text) 30%, transparent),
     inset 0 1px 1px rgba(255,255,255,0.85),
-    0 0 0 1px color-mix(in oklab, var(--accent) 42%, transparent),
-    0 0 10px color-mix(in oklab, var(--accent) 50%, transparent);
+    0 0 0 1px color-mix(in oklab, var(--live) 42%, transparent),
+    0 0 10px color-mix(in oklab, var(--live) 50%, transparent);
 }
 
 /* the contact row gets the same treatment so the page reads as one system */
@@ -1259,9 +1257,9 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes dot-glow {
-  0%   { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 45%, transparent); }
-  70%  { box-shadow: 0 0 0 8px color-mix(in oklab, var(--accent) 0%, transparent); }
-  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent) 0%, transparent); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in oklab, var(--live) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 8px color-mix(in oklab, var(--live) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--live) 0%, transparent); }
 }
 
 /* Scroll reveal — driven by IntersectionObserver so it works in every browser,
@@ -1272,6 +1270,13 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 .motion-ready .reveal:not(.is-visible) { opacity: 0; transform: translateY(26px); }
 .motion-ready .reveal.is-visible { opacity: 1; transform: none; }
+
+/* The reverse. A block that leaves through the top is re-armed to come back
+   DOWN from above, so the same 26px slide runs mirrored on the way up. */
+.motion-ready .reveal.reveal--above:not(.is-visible) { transform: translateY(-26px); }
+
+/* the line needs a transition to retract smoothly when you scroll back up */
+.timeline::before { transition: transform 1.1s var(--ease-soft); }
 
 /* timeline line draws itself once the timeline scrolls in */
 .timeline.draw-init::before { transform: translateX(-50%) scaleY(0); transform-origin: top; }
@@ -1368,7 +1373,7 @@ body { letter-spacing: 0.001em; }
 .eyebrow, .nav-links a, .nav-prompt,
 .btn-primary, .btn-ghost, .contact-btn, .music-platform-btn,
 .stag, .tag, .tool-name, .tool-level, .tool-group-label,
-.cert-block-label, .sample-type, .samples-note, .project-note,
+.cert-block-label, .sample-type, .samples-note,
 .timeline-date, .timeline-company, .music-album-meta,
 .credit, footer {
   font-family: var(--font-mono);
@@ -1517,7 +1522,10 @@ nav.scrolled { height: 48px; }
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2.3rem, 1.05rem + 4.5vw, 4.8rem);
+  /* Continuous from the smallest phone to the widest desktop. The old
+     clamp(2.3rem, ..., 4.8rem) bottomed out at 36.8px, which made "MICHAEL"
+     outgrow its column once the portrait moved in beside the name below 860px. */
+  font-size: clamp(1.75rem, 0.9rem + 4.6vw, 4.8rem);
   line-height: 0.98;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -1651,7 +1659,7 @@ nav.scrolled { height: 48px; }
   color: var(--term-dim);
 }
 .section-heading em { color: var(--accent); }
-.services-intro, .samples-note, .project-note, .music-intro, .music-note { color: var(--term-dim); }
+.services-intro, .samples-note, .music-intro, .music-note { color: var(--term-dim); }
 
 /* ─── 9. PANES, CHIPS AND LISTS ─── */
 .service-card, .sample-card, .value-card, .timeline-card, .cert-item, .status-chip {
@@ -1793,6 +1801,209 @@ footer {
   .boot, .term-spec-row { opacity: 1 !important; translate: none !important; animation: none !important; }
   .hero-photo-col { animation: none; }
 }
+
+/* ─── 13. MOBILE HERO: the portrait sits beside the name ───
+   Below 860px the photo used to land under the whole hero. Here .hero-content is
+   dissolved with display:contents so the name block and the photo become siblings
+   in .hero-inner's grid, and the spec table, buttons and closing line span both
+   columns underneath. Kept last so it outranks the rules it overrides. */
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) clamp(76px, 23vw, 124px);
+    column-gap: clamp(var(--space-4), 4vw, var(--space-6));
+    row-gap: 0;                    /* the children's own margins already space the rows */
+    align-items: start;
+  }
+  .hero-content { display: contents; }
+  .hero-content > .boot--1 { grid-column: 1; grid-row: 1; }
+  .hero-content > .term-spec,
+  .hero-content > .hero-ctas,
+  .hero-content > .term-ready { grid-column: 1 / -1; }
+  .hero-photo-col {
+    grid-column: 2; grid-row: 1;
+    align-self: center;
+    animation: none;               /* the float would drift against the headline */
+  }
+  .hero-photo-col .photo-frame { width: 100%; padding: 6px; }
+  .hero-photo-col .photo-frame::before,
+  .hero-photo-col .photo-frame::after { width: 10px; height: 10px; }
+  .hero-photo-col .photo-caption { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   14. HOVER — the pane refreshes
+   One gesture across every pane and button: a soft light band travels through
+   it while the pointer is inside and travels back out when you leave, because
+   a background-position transition reverses on mouse-out for free. The sweep
+   is stacked ON TOP of the existing sheen layer rather than replacing it, so
+   the bevel and glass survive. Colour follows --accent, which is navy in light
+   mode and white in dark — a shadow passing on light, a glow on dark.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ─── panes: cards and list rows ─── */
+.service-card, .sample-card, .value-card, .timeline-card, .cert-item {
+  background-image:
+    linear-gradient(100deg, transparent 40%,
+      color-mix(in oklab, var(--accent) 10%, transparent) 50%, transparent 60%),
+    linear-gradient(180deg, var(--card-sheen), transparent 42%);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 200% 100%, 100% 100%;
+  background-position: -110% 0, 0 0;
+  transition: background-position 0.75s var(--ease-soft),
+              transform 0.35s var(--ease-soft),
+              border-color 0.35s var(--ease-soft),
+              box-shadow 0.35s var(--ease-soft);
+}
+.service-card:hover, .sample-card:hover, .value-card:hover,
+.timeline-card:hover, .cert-item:hover { background-position: 10% 0, 0 0; }
+
+/* the two panes that had no pointer state of their own get one */
+.timeline-card:hover {
+  border-color: color-mix(in oklab, var(--accent) 30%, transparent);
+  box-shadow: var(--shadow-md);
+}
+.cert-item:hover { border-color: color-mix(in oklab, var(--accent) 32%, transparent); }
+
+/* ─── buttons: one sweep for the whole family ─── */
+/* .btn-primary already sweeps with its own ::after; the quieter capsules get the
+   same gesture. z-index:-1 keeps the band beneath the label, and the band is
+   translucent, so the text stays crisp as it passes. */
+.btn-ghost, .contact-btn, .music-platform-btn, .project-link {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: border-color var(--transition), color var(--transition),
+              background-color var(--transition), box-shadow var(--transition),
+              transform var(--transition);
+}
+.btn-ghost::before, .contact-btn::before,
+.music-platform-btn::before, .project-link::before {
+  content: "";
+  position: absolute;
+  top: -30%; bottom: -30%; left: -70%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent,
+              color-mix(in oklab, var(--accent) 18%, transparent), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s var(--ease-soft);
+  pointer-events: none;
+  z-index: -1;
+}
+/* the filled contact button is the one case where --accent is the background,
+   so its band has to come from the ink sitting on top of it instead */
+.contact-btn.primary-btn::before {
+  background: linear-gradient(100deg, transparent,
+              color-mix(in oklab, var(--on-accent) 26%, transparent), transparent);
+}
+.btn-ghost:hover::before, .contact-btn:hover::before,
+.music-platform-btn:hover::before, .project-link:hover::before { left: 125%; }
+
+/* a keystroke on press, matching the primary button */
+.btn-ghost:active, .contact-btn:active,
+.music-platform-btn:active, .project-link:active { transform: translateY(0) scale(0.985); }
+
+/* ─── the small print: chips, badges, tool rows ─── */
+.stag, .tag, .status-chip {
+  transition: background-color var(--transition), border-color var(--transition),
+              color var(--transition), transform var(--transition);
+}
+.tag:hover, .stag:hover { transform: translateY(-1px); color: var(--accent); }
+.tag:hover::before, .tag:hover::after,
+.stag:hover::before, .stag:hover::after { opacity: 1; color: var(--accent); }
+
+/* the indicator light of the chip you are on burns a little brighter */
+.status-chip:hover .status-chip-dot {
+  box-shadow: 0 0 10px color-mix(in oklab, var(--live) 85%, transparent);
+}
+
+/* the badge is a filled capsule, not an outlined one — brighten the fill */
+.tool-name, .tool-level { transition: color var(--transition), background-color var(--transition); }
+.tool-item:hover .tool-name { color: var(--accent); }
+.tool-item:hover .tool-level {
+  color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 14%, transparent);
+}
+
+/* nothing here moves for visitors who asked it not to */
+@media (prefers-reduced-motion: reduce) {
+  .service-card, .sample-card, .value-card, .timeline-card, .cert-item,
+  .btn-ghost, .contact-btn, .music-platform-btn, .project-link,
+  .stag, .tag, .status-chip, .tool-name, .tool-level { transition: none !important; }
+  .btn-ghost::before, .contact-btn::before,
+  .music-platform-btn::before, .project-link::before { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   15. APP SCREENSHOTS — the Matinee strip
+   The app's own screenshots, in the same language as the hero portrait:
+   a hairline box with corner brackets and a mono caption. They live inside
+   the project card, so once the card is narrower than the frames the row
+   becomes a scroll-snap strip you can flick. 400px sources against a
+   ~148px display keeps them sharp on a retina phone without the weight.
+   ══════════════════════════════════════════════════════════════════════ */
+.shot-strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--term-faint);
+  margin-top: var(--space-6);
+}
+.shot-strip-label::before { content: "$ "; color: var(--accent); }
+
+.shot-strip {
+  display: flex;
+  gap: clamp(10px, 1.4vw, 16px);
+  margin-top: var(--space-3);
+  /* the brackets sit at -1px, and a scroll box clips in both axes: this padding
+     is what keeps them from being shaved off */
+  padding: 3px 3px 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--term-line) transparent;
+}
+.shot-strip::-webkit-scrollbar { height: 4px; }
+.shot-strip::-webkit-scrollbar-thumb { background: var(--term-line); border-radius: 2px; }
+.shot-strip::-webkit-scrollbar-track { background: transparent; }
+
+.shot { flex: 1 1 118px; min-width: 92px; scroll-snap-align: start; }
+.shot-frame {
+  position: relative;
+  padding: 5px;
+  background: var(--term-bg-soft);
+  border: 1px solid var(--term-line);
+  transition: border-color var(--transition), transform 0.35s var(--ease-soft);
+}
+.shot-frame::before, .shot-frame::after {
+  content: ""; position: absolute; width: 9px; height: 9px;
+  border: 2px solid var(--accent);
+}
+.shot-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.shot-frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.94) contrast(1.02);
+  transition: filter 0.35s var(--ease-soft);
+}
+/* the screen wakes under the pointer */
+.shot:hover .shot-frame { border-color: var(--accent); transform: translateY(-2px); }
+.shot:hover img { filter: saturate(1.05) contrast(1.05); }
+
+.shot-caption {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--term-faint);
+  text-align: center;
+}
+.shot-caption::before { content: "// "; color: var(--term-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  .shot-frame, .shot img { transition: none !important; }
+  .shot:hover .shot-frame { transform: none !important; }
+}
 </style>
 </head>
 <body>
@@ -1871,10 +2082,6 @@ footer {
               <dt>Experience</dt>
               <dd><span class="term-ok">[OK]</span> <span class="stat-num" data-count="2" data-suffix=" yrs">2 yrs</span> corporate CX</dd>
             </div>
-            <div class="term-spec-row">
-              <dt>Tools</dt>
-              <dd><span class="term-ok">[OK]</span> <span class="stat-num" data-count="5" data-suffix="+">5+</span> CRM &amp; productivity</dd>
-            </div>
             <div class="term-spec-row term-spec-row--status">
               <dt>Status</dt>
               <dd><span class="status-dot" aria-hidden="true"></span><span class="term-live">[LIVE]</span> Open to remote work</dd>
@@ -1940,6 +2147,10 @@ footer {
             <div class="cert-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-trophy" style="width:16px;height:16px;"><path d="M16 17H13V19H15V21H9V19H11V17H8V15H16V17ZM18 5H22V11H20V7H18V11H20V13H18V15H16V5H8V15H6V13H4V11H6V7H4V11H2V5H6V3H18V5Z"/></svg>
               Lean Six Sigma — Yellow Belt
+            </div>
+            <div class="cert-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-trophy" style="width:16px;height:16px;"><path d="M16 17H13V19H15V21H9V19H11V17H8V15H16V17ZM18 5H22V11H20V7H18V11H20V13H18V15H16V5H8V15H6V13H4V11H6V7H4V11H2V5H6V3H18V5Z"/></svg>
+              Design for Six Sigma — Green Belt
             </div>
             <div class="cert-item">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-shield" style="width:16px;height:16px;"><path d="M4 2h16v2H4zM2 4h2v10H2zm18 0h2v10h-2zM4 14h2v2H4zm2 2h2v2H6zm4 4h4v2h-4zm10-6h-2v2h2zm-2 2h-2v2h2zm-2 2h-2v2h2zm-6 0H8v2h2z"/></svg>
@@ -2082,30 +2293,6 @@ footer {
           <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-building" style="width:16px;height:16px;"><path d="M5 2h14v2H5zm0 18h14v2H5zM3 4h2v16H3zm16 0h2v16h-2zM7 6h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm-1 4h4v2h-4zm5-4h2v2h-2z"/></svg></div>
           <span class="tool-name">Propery Management Sofwares</span>
           <span class="tool-level">Experienced</span>
-        </div>
-      </div>
-
-      <div class="tool-group reveal">
-        <div class="tool-group-label">Microsoft 365</div>
-        <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
-          <span class="tool-name">Microsoft Teams</span>
-          <span class="tool-level">Daily Use</span>
-        </div>
-        <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
-          <span class="tool-name">Outlook</span>
-          <span class="tool-level">Daily Use</span>
-        </div>
-        <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
-          <span class="tool-name">Excel &amp; Word</span>
-          <span class="tool-level">Comfortable</span>
-        </div>
-        <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
-          <span class="tool-name">SharePoint</span>
-          <span class="tool-level">Used Regularly</span>
         </div>
       </div>
 
@@ -2264,14 +2451,37 @@ footer {
           </div>
         </div>
         <div class="sample-body">
-          <p>A native Letterboxd client for iOS 6, written in Objective-C with Theos, targeting armv7 and installed on a 2012 iPhone as a jailbreak package. iOS 6 has no TLS that letterboxd.com will still speak, so the app statically links a vendored Mbed TLS 2.28.9 — mbedtls, mbedcrypto and mbedx509 — just to open the connection.</p>
-          <p>Before writing the client I built a standalone C probe and measured the live server instead of trusting the documentation: SNI turns out to be mandatory, responses arrive chunked, and the 81 KB search page lands across 48 separate TLS reads — a single read returns roughly a fifth of it. The same probe killed the obvious approach, because Letterboxd's search is a JavaScript shell behind a Cloudflare challenge, which a non-JS client cannot scrape. Film pages still work, and that is what the app is built around.</p>
+          <p>A native Letterboxd client for iOS 6. Browse your diary, open a film, and log what you've watched with a rating, a review, a rewatch or a like — running as an app on a 2012 iPhone.</p>
+          <p>A fun side project, and a good excuse to keep an old phone in use. It's styled to match the phone it runs on: those blue nav bars, shaped back buttons and green stars.</p>
           <div class="tag-row">
             <span class="tag">Objective-C</span>
-            <span class="tag">Theos</span>
-            <span class="tag">iOS 6.0 / armv7</span>
-            <span class="tag">Mbed TLS 2.28.9</span>
+            <span class="tag">iOS 6</span>
             <span class="tag">UIKit</span>
+            <span class="tag">Jailbreak</span>
+          </div>
+          <p class="shot-strip-label">ls ./screenshots</p>
+          <div class="shot-strip">
+            <figure class="shot">
+              <div class="shot-frame">
+                <img src="./matinee-diary.jpg" alt="Diary, with the orb mark as the only navigation title"
+                     width="400" height="600" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="shot-caption">diary</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="shot-frame">
+                <img src="./matinee-film.jpg" alt="Film detail with a shaped iOS 6 back button"
+                     width="400" height="600" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="shot-caption">film</figcaption>
+            </figure>
+            <figure class="shot">
+              <div class="shot-frame">
+                <img src="./matinee-log.jpg" alt="Log sheet with green stars"
+                     width="400" height="600" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="shot-caption">log-sheet</figcaption>
+            </figure>
           </div>
           <a class="project-link" href="https://github.com/kerthmfy/Matinee-ios6" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
           <p class="project-disclaimer">Personal, non-commercial project. Not affiliated with, endorsed by, or supported by Letterboxd — all film data and artwork belong to Letterboxd and its contributors.</p>
@@ -2279,7 +2489,6 @@ footer {
       </div>
 
     </div>
-    <p class="project-note reveal">I keep building this out because I like understanding systems end-to-end, not just the ticket in front of me — and I'd genuinely love to bring that same troubleshooting mindset to an IT support, Linux administration, or infrastructure-focused role.</p>
   </div>
 </section>
 
@@ -2307,7 +2516,7 @@ footer {
             Bandcamp
           </a>
           <a href="https://soundcloud.com/kerth-yadao-239260216" target="_blank" rel="noopener noreferrer" class="music-platform-btn">
-            <svg width="16" height="16" viewBox="0 0 300 300" fill="currentColor" aria-label="SoundCloud" role="img"><path d="M9.5 185.2c0 1.2 1 2.3 2.3 2.3s2.3-1 2.3-2.3l2.9-27.7-2.9-26.8c0-1.2-1-2.2-2.3-2.2s-2.3 1-2.3 2.2v54.5zm-9.5-8.7c0 1 .9 1.9 1.9 1.9 1.1 0 1.9-.9 1.9-1.9l2.9-19 -2.9-18.3c0-1-0.9-1.9-1.9-1.9-1 0-1.9 0.9-1.9 1.9v37.3zm19.1 2.9c0 1.5 1.2 2.7 2.7 2.7s2.7-1.2 2.7-2.7l2.7-30.6-2.7-29.3c0-1.5-1.2-2.7-2.7-2.7s-2.7 1.2-2.7 2.7v59.9zm9.6 2.5c0 1.8 1.5 3.3 3.3 3.3s3.3-1.5 3.3-3.3l2.5-33.1-2.5-31.5c0-1.8-1.5-3.3-3.3-3.3s-3.3 1.5-3.3 3.3v64.6zm9.7 1.2c0 2.1 1.7 3.8 3.8 3.8s3.8-1.7 3.8-3.8l2.3-34.3-2.3-32.3c0-2.1-1.7-3.8-3.8-3.8s-3.8 1.7-3.8 3.8v66.6zm9.8 0.1c0 2.4 1.9 4.3 4.3 4.3s4.3-1.9 4.3-4.3l2.1-34.4-2.1-32.4c0-2.4-1.9-4.3-4.3-4.3s-4.3 1.9-4.3 4.3v66.8zm9.9 0c0 2.7 2.2 4.9 4.9 4.9s4.9-2.2 4.9-4.9l1.9-34.4-1.9-32.2c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v66.6zm9.9 0c0 3 2.4 5.4 5.4 5.4s5.4-2.4 5.4-5.4l1.7-34.4-1.7-31.9c0-3-2.4-5.4-5.4-5.4s-5.4 2.4-5.4 5.4v66.3zm-32.3-82.9c-1.5-4.9-4.7-9-9-11.7-2.2-1.4-4.7-2.3-7.3-2.7-0.9-0.1-1.9-0.2-2.8-0.2-12.8 0-23.5 9-26.2 21-1.4-2-3.7-3.3-6.3-3.3-4.1 0-7.4 3.3-7.4 7.4v0c-4.1 0-7.4 3.3-7.4 7.4v51.5c0 4.1 3.3 7.4 7.4 7.4h109.7c4.1 0 7.4-3.3 7.4-7.4v-38.9c0-4.1-3.3-7.4-7.4-7.4-0.2 0-0.4 0-0.6 0-0.1-0.5-0.1-1-0.1-1.5 0-9.4-7.6-17-17-17-2.9 0-5.6 0.7-7.9 2-2.7-11.2-12.9-19.7-25-19.7-3.1 0-6.1 0.6-8.8 1.7z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-label="SoundCloud" role="img"><path d="M23.999 14.165c-.052 1.796-1.612 3.169-3.4 3.169h-8.18a.68.68 0 0 1-.675-.683V7.862a.747.747 0 0 1 .452-.724s.75-.513 2.333-.513a5.364 5.364 0 0 1 2.763.755 5.433 5.433 0 0 1 2.57 3.54c.282-.08.574-.121.868-.12.884 0 1.73.358 2.347.992s.948 1.49.922 2.373ZM10.721 8.421c.247 2.98.427 5.697 0 8.672a.264.264 0 0 1-.53 0c-.395-2.946-.22-5.718 0-8.672a.264.264 0 0 1 .53 0ZM9.072 9.448c.285 2.659.37 4.986-.006 7.655a.277.277 0 0 1-.55 0c-.331-2.63-.256-5.02 0-7.655a.277.277 0 0 1 .556 0Zm-1.663-.257c.27 2.726.39 5.171 0 7.904a.266.266 0 0 1-.532 0c-.38-2.69-.257-5.21 0-7.904a.266.266 0 0 1 .532 0Zm-1.647.77a26.108 26.108 0 0 1-.008 7.147.272.272 0 0 1-.542 0 27.955 27.955 0 0 1 0-7.147.275.275 0 0 1 .55 0Zm-1.67 1.769c.421 1.865.228 3.5-.029 5.388a.257.257 0 0 1-.514 0c-.21-1.858-.398-3.549 0-5.389a.272.272 0 0 1 .543 0Zm-1.655-.273c.388 1.897.26 3.508-.01 5.412-.026.28-.514.283-.54 0-.244-1.878-.347-3.54-.01-5.412a.283.283 0 0 1 .56 0Zm-1.668.911c.4 1.268.257 2.292-.026 3.572a.257.257 0 0 1-.514 0c-.241-1.262-.354-2.312-.023-3.572a.283.283 0 0 1 .563 0Z"/></svg>
             SoundCloud
           </a>
         </div>
@@ -2362,13 +2571,16 @@ footer {
 
 <script>
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduceMotion) {
+  console.info('[portfolio] prefers-reduced-motion: reduce is on, so the page holds still by design. Turn off Reduce Motion in your OS or browser to see the animations.');
+}
 
-// ─── Theme ───
+// ─── Theme (also recolours the Bandcamp player) ───
 (function(){
   const t = document.querySelector('[data-theme-toggle]');
   const rod = document.documentElement;
   const embed = document.getElementById('bandcamp-embed');
-
+  // Light is the default; the OS preference is intentionally ignored.
   let d = rod.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   rod.setAttribute('data-theme', d);
 
@@ -2521,12 +2733,14 @@ if (ham && menu) {
   paint();
 })();
 
-// ─── Scroll reveal (IntersectionObserver keeps this working on every browser) ───
+// ─── Scroll reveal ───
+// Bidirectional: blocks rise in as you scroll down, and drop in from above as you
+// scroll back up, so the page moves both ways instead of only downwards.
 (function(){
   const items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if (!items.length || reduceMotion || !('IntersectionObserver' in window)) return;
 
-
+  // stagger anything that shares a parent (grids, card rows, lists)
   const groups = new Map();
   items.forEach(el => {
     const key = el.parentElement;
@@ -2537,31 +2751,102 @@ if (ham && menu) {
     el.style.setProperty('--reveal-delay', Math.min(i * 70, 420) + 'ms');
   }));
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      io.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  const seen = new WeakSet();
 
-  items.forEach(el => io.observe(el));
+  function show(el){
+    seen.add(el);
+    el.classList.add('is-visible');
+  }
+  // which edge it left by decides which side it comes back from
+  function hide(el, leftThroughTop){
+    el.classList.toggle('reveal--above', leftThroughTop);
+    el.classList.remove('is-visible');
+  }
+
+  // entering fires a little before the block is properly on screen
+  const entering = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) show(entry.target); });
+  }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+  // leaving fires only once the block is completely off screen, so nothing still
+  // partly visible ever blinks out. threshold 0 rather than a fraction, because a
+  // block taller than the window can never reach a fraction threshold — which is
+  // also how a short desktop window used to strand whole sections at opacity 0.
+  const leaving = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) return;
+      hide(entry.target, entry.boundingClientRect.top < 0);
+    });
+  }, { threshold: 0 });
+
+  // Anything at or above the fold-bottom on the first frame counts as seen, so a
+  // fast wheel flick, a Page Down or an anchor jump cannot carry a block clean
+  // past the viewport between two frames and leave it stranded. Only *unseen*
+  // blocks: once an element is in play the two observers own it, and a sweep that
+  // re-showed it would cancel the reverse animation.
+  function sweep(){
+    const limit = window.innerHeight * 0.94;
+    items.forEach(el => {
+      if (seen.has(el)) return;
+      const top = el.getBoundingClientRect().top;
+      if (top < limit) { el.classList.toggle('reveal--above', top < 0); show(el); }
+    });
+  }
+
+  // Observe on the second frame so the hidden state is painted first: observing
+  // immediately lets a fast desktop load mark everything above the fold visible
+  // before the first paint, and a transition between states that were never
+  // painted separately simply never runs.
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    items.forEach(el => { entering.observe(el); leaving.observe(el); });
+    sweep();
+  }));
+
+  let queued = false;
+  window.addEventListener('scroll', () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; sweep(); });
+  }, { passive: true });
+  window.addEventListener('resize', sweep, { passive: true });
 })();
 
-// ─── Timeline line  ───
+// ─── Timeline line draws in, and retracts on the way back up ───
 (function(){
   const timeline = document.querySelector('.timeline');
   if (!timeline) return;
   timeline.classList.add('draw-init');
   if (!('IntersectionObserver' in window)) { timeline.classList.add('is-drawn'); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      timeline.classList.add('is-drawn');
-      io.disconnect();
+
+  let seen = false;
+  const entering = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { seen = true; timeline.classList.add('is-drawn'); } });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+
+  // the same class drives it, so removing it retracts the line symmetrically
+  const leaving = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (!entry.isIntersecting) timeline.classList.remove('is-drawn'); });
+  }, { threshold: 0 });
+
+  entering.observe(timeline);
+  leaving.observe(timeline);
+
+  // a fast flick can skip the line entirely — draw it once it is above the fold
+  let queued = false;
+  function catchUp(){
+    if (seen || queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      if (seen) return;
+      if (timeline.getBoundingClientRect().top < window.innerHeight * 0.9) {
+        seen = true;
+        timeline.classList.add('is-drawn');
+      }
     });
-  }, { threshold: 0.05 });
-  io.observe(timeline);
+  }
+  window.addEventListener('scroll', catchUp, { passive: true });
+  window.addEventListener('resize', catchUp, { passive: true });
 })();
 
 // ─── Nav scroll-spy ───
@@ -2636,7 +2921,7 @@ if (ham && menu) {
     win.classList.add('is-booted');
   }
 
-  // reduced motion, or no scroll-reveal support
+  // reduced motion, or no scroll-reveal support: everything is already in place
   if (reduceMotion || !document.documentElement.classList.contains('motion-ready')) {
     finish();
     return;
@@ -2650,7 +2935,7 @@ if (ham && menu) {
     setTimeout(type, 62 + Math.random() * 38);
   }
   setTimeout(type, 240);
-
+  // belt and braces: never leave the hero invisible if a timer is dropped
   setTimeout(finish, 3000);
 })();
 
