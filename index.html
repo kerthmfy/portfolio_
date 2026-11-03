@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f1ece1">
+<meta name="theme-color" content="#f1f7f9">
 <script>
 // Set before first paint so scroll-reveal content starts hidden (never flashes in).
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
@@ -85,77 +85,73 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   --content-wide: 1160px;
 }
 
-/* Light mode */
+/* Light mode — palette sampled from favicon.png:
+   navy #0B0F33 · ice #BEE2EB · bevel #87C2D6 · aqua #4DA2BF · slate #3D6685 · face #F4F4F4 */
 :root, [data-theme="light"] {
-  --bg:             #f1ece1;
-  --surface:        #f8f3e9;
-  --surface-2:      #fffdf7;
-  --surface-offset: #e7dfd0;
-  --divider:        #d7cdba;
-  --border:         rgba(28,24,19,0.12);
+  --bg:             #f1f7f9;
+  --surface:        #f9fdfe;
+  --surface-2:      #ffffff;
+  --surface-offset: #e3eff4;
+  --divider:        #cfe2e9;
+  --border:         rgba(11,15,51,0.10);
 
-  --text:           #1c1814;
-  --text-muted:     #5a5349;
-  --text-faint:     #8b8175;
-  --text-inverse:   #f1ece1;
+  --text:           #0b0f33;
+  --text-muted:     #4a5c74;
+  --text-faint:     #8a9fb2;
+  --text-inverse:   #f1f7f9;
 
-  --primary:        #1f4b46;
-  --primary-hover:  #163a36;
-  --primary-hl:     #d9e4de;
+  --primary:        #3d6685;
+  --primary-hover:  #2a4d68;
+  --primary-hl:     #cde5ee;
 
-  --accent:         #a8471f;
-  --accent-hover:   #8a3715;
-  --accent-hl:      rgba(168,71,31,0.09);
-  --on-accent:      #fdf7ee;
+  --accent:         #0b0f33;
+  --accent-hover:   #252c58;
+  --accent-hl:      rgba(11,15,51,0.07);
+  --on-accent:      #f4f9fb;
 
-  /* the third working hue, reserved for the index */
-  --index:          #8a5f0f;
+  /* the only hue on the page: status indicator lights */
+  --live:           #15a34a;
 
-  /* one signal colour only */
-  --live:           #2a7045;
-
-  --shadow-sm: 0 1px 3px rgba(28,24,19,0.08);
-  --shadow-md: 0 4px 16px rgba(28,24,19,0.11);
-  --shadow-lg: 0 12px 40px rgba(28,24,19,0.16);
+  --shadow-sm: 0 1px 3px rgba(11,15,51,0.07);
+  --shadow-md: 0 4px 16px rgba(11,15,51,0.10);
+  --shadow-lg: 0 12px 40px rgba(11,15,51,0.15);
 }
 
-/* Dark mode */
+/* Dark mode — same favicon palette, inverted onto the navy keycap */
 [data-theme="dark"] {
-  --bg:             #14110d;
-  --surface:        #1a1611;
-  --surface-2:      #201b15;
-  --surface-offset: #272119;
-  --divider:        #362e24;
-  --border:         rgba(241,233,220,0.10);
+  --bg:             #080b26;
+  --surface:        #0d1233;
+  --surface-2:      #111741;
+  --surface-offset: #172047;
+  --divider:        #1e2751;
+  --border:         rgba(190,226,235,0.10);
 
-  --text:           #f1e9dc;
-  --text-muted:     #c0b4a3;
-  --text-faint:     #8d8172;
-  --text-inverse:   #14110d;
+  --text:           #e8f2f6;
+  --text-muted:     #9db3c6;
+  --text-faint:     #5d7392;
+  --text-inverse:   #080b26;
 
-  --primary:        #8fc0b6;
-  --primary-hover:  #add6cd;
-  --primary-hl:     #1f3a35;
+  --primary:        #87c2d6;
+  --primary-hover:  #a9dceb;
+  --primary-hl:     #12294a;
 
-  --accent:         #e8835a;
-  --accent-hover:   #f2a17c;
-  --accent-hl:      rgba(232,131,90,0.12);
-  --on-accent:      #1a0f08;
+  --accent:         #ffffff;
+  --accent-hover:   #d6e5f0;
+  --accent-hl:      rgba(255,255,255,0.10);
+  --on-accent:      #05081f;
 
-  --index:          #d9a441;
-
-  --live:           #58b87c;
+  --live:           #3fc047;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.35);
-  --shadow-md: 0 6px 20px rgba(0,0,0,0.42);
-  --shadow-lg: 0 18px 50px rgba(0,0,0,0.55);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.45);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.55);
 }
 
 /* ─── BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
-  scroll-behavior: auto;      /* the nav tween handles easing */
-  scroll-padding-top: 64px;   /* keeps plain hash jumps clear of the fixed nav */
+  scroll-behavior: auto;     
+  scroll-padding-top: 64px;  
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -1007,14 +1003,14 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 :root {
   --gel-edge:   rgba(255,255,255,0.85);
   --gel-sheen:  rgba(255,255,255,0.55);
-  --gel-shade:  rgba(28,24,19,0.13);
-  --stripe:     rgba(28,24,19,0.045);
-  --btn-shade:  linear-gradient(180deg, rgba(28,24,19,0) 50%, rgba(28,24,19,0.14) 100%);
+  --gel-shade:  rgba(11,15,51,0.13);
+  --stripe:     rgba(11,15,51,0.045);
+  --btn-shade:  linear-gradient(180deg, rgba(11,15,51,0) 50%, rgba(11,15,51,0.14) 100%);
   --capsule:    linear-gradient(180deg, var(--gel-sheen), rgba(255,255,255,0) 62%);
   --card-rim:   rgba(255,255,255,0.9);
-  --card-foot:  rgba(28,24,19,0.05);
+  --card-foot:  rgba(11,15,51,0.05);
   --card-sheen: rgba(255,255,255,0.55);
-  --card-lift:  0 1px 2px rgba(28,24,19,0.05), 0 10px 24px -16px rgba(28,24,19,0.30);
+  --card-lift:  0 1px 2px rgba(11,15,51,0.05), 0 10px 24px -16px rgba(11,15,51,0.30);
 }
 [data-theme="dark"] {
   --gel-edge:   rgba(255,255,255,0.18);
@@ -1311,21 +1307,21 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   --radius-xl: 8px; --radius-2xl: 10px;
 }
 :root, [data-theme="light"] {
-  --term-bg:      #fffdf8;
-  --term-bg-soft: #f8f2e6;
-  --term-line:    rgba(28,24,19,0.16);
-  --term-line-2:  rgba(28,24,19,0.07);
-  --term-dim:     #5a5349;
-  --term-faint:   #6f665a;
-  --term-scan:    0.028;
+  --term-bg:      #ffffff;
+  --term-bg-soft: #f6fafc;
+  --term-line:    rgba(11,15,51,0.15);
+  --term-line-2:  rgba(11,15,51,0.07);
+  --term-dim:     #566274;
+  --term-faint:   #58697d;
+  --term-scan:    0.030;
 }
 [data-theme="dark"] {
-  --term-bg:      #100d0a;
-  --term-bg-soft: #181310;
-  --term-line:    rgba(241,233,220,0.17);
-  --term-line-2:  rgba(241,233,220,0.07);
-  --term-dim:     #bdb1a0;
-  --term-faint:   #938779;
+  --term-bg:      #05081f;
+  --term-bg-soft: #0a0e2c;
+  --term-line:    rgba(190,226,235,0.22);
+  --term-line-2:  rgba(190,226,235,0.08);
+  --term-dim:     #9db3c6;
+  --term-faint:   #8497b5;
   --term-scan:    0.045;
 }
 
@@ -1394,10 +1390,10 @@ nav.scrolled { height: 48px; }
   border: 1px solid var(--term-line);
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 26px 60px -34px rgba(28,24,19,0.45);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 26px 60px -34px rgba(11,15,51,0.45);
 }
 [data-theme="dark"] .term-window {
-  box-shadow: 0 1px 0 rgba(241,233,220,0.06) inset, 0 30px 80px -40px #000;
+  box-shadow: 0 1px 0 rgba(190,226,235,0.06) inset, 0 30px 80px -40px #000;
 }
 /* scanlines over the screen */
 .term-window::after {
@@ -2467,7 +2463,7 @@ html.viewer-open { overflow: hidden; }
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: rgba(255, 255, 255, 0.08);
-  color: #f1ece1;
+  color: #f1f7f9;
   font: 400 0.95rem/1 var(--font-mono);
   cursor: pointer;
   transition: background 0.25s var(--ease-soft), border-color 0.25s var(--ease-soft);
@@ -2601,7 +2597,28 @@ html.viewer-open { overflow: hidden; }
 
 /* the index carries the third hue, never the body copy */
 .section-rail::before,
-.service-card > h3::before { color: var(--index); }
+.service-card > h3::before { color: var(--text-faint); }
+
+/* ─── 20. COMPOSE — the message field is ruled paper ─── */
+
+/* The draft's rows are already ruled, but the message itself was a blank box.
+   Here it prints on ruled stock: one hairline per line box, drawn behind the
+   text, so what you type sits on the line instead of floating in white space.
+   background-attachment: local keeps the rules locked to the text when the
+   field scrolls. */
+.draft-msg { align-items: stretch; }
+.draft-body {
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.8em - 1px),
+    color-mix(in oklab, var(--term-line) 62%, transparent) calc(1.8em - 1px),
+    color-mix(in oklab, var(--term-line) 62%, transparent) 1.8em
+  );
+  background-attachment: local;
+  background-origin: content-box;
+}
 
 </style>
 </head>
@@ -3195,7 +3212,7 @@ if (reduceMotion) {
 
   const shell = document.querySelector('meta[name="theme-color"]');
   function syncShell(){
-    if (shell) shell.setAttribute('content', d === 'dark' ? '#14110d' : '#f1ece1');
+    if (shell) shell.setAttribute('content', d === 'dark' ? '#080b26' : '#f1f7f9');
   }
 
   function syncEmbed(){
@@ -3343,7 +3360,7 @@ if (ham && menu) {
 })();
 
 // ─── Scroll reveal ───
-// Bidirectional: blocks rise in as you scroll down, and drop in from above as you
+// Bidirectional: blocks rise in as scroll down, and drop in from above as you
 // scroll back up, so the page moves both ways instead of only downwards.
 (function(){
   const items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
