@@ -2162,14 +2162,7 @@ body { counter-reset: sect; }
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   16. CONTACT — the last command
-   Every other section reports; this one hands over the keyboard. Instead of
-   the centred "Ready to start?" block with three buttons, the dossier closes
-   with a compose window: the visitor writes the message in place and Send
-   assembles a mailto from the subject and body. No endpoint, no storage, no
-   third-party form — the message is local until their mail client opens. The
-   window reuses the terminal chrome, so the page ends on the screen it began
-   on, and the bar carries the 07 the rails stop at.
+   CONTACT 
    ══════════════════════════════════════════════════════════════════════ */
 #contact { text-align: start; }
 #contact .mail-window {
@@ -2300,14 +2293,7 @@ body { counter-reset: sect; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   17. PORTRAIT — the dossier when it fits in one hand
-   Below 1024px everything that carries the desktop identity used to collapse
-   into plain stacked blocks: the rail's numbering survived as a bare number,
-   the command line went back to being an uppercase label, and the status bar
-   reverted to five stacked rows. This pass translates the system instead of
-   dropping it — a ruled kicker line (index + command) over every section
-   title, and an instrument panel in the hero where the spec list used to be.
-   Pure CSS, no new markup, and nothing here applies at 1024px or above.
+   PORTRAIT 
    ══════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1023px) {
 
@@ -2387,13 +2373,7 @@ body { counter-reset: sect; }
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   18. SCREENSHOT VIEWER — the card is a contact sheet, this is the print
-   The three Matinee shots render at roughly 120px wide inside the strip, so
-   the detail is never actually visible. Each thumbnail is a link to its own
-   file: without JavaScript it opens the image the old way; with it, the click
-   is captured into a native <dialog>, which gives focus trapping, Escape and
-   a top-layer backdrop for free. The image is capped by both viewport axes so
-   a portrait screenshot never crops and never upscales past 78vh.
+    SCREENSHOT VIEWER 
    ══════════════════════════════════════════════════════════════════════ */
 .shot-open { display: block; cursor: zoom-in; }
 .shot-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -3278,7 +3258,7 @@ dialog.cmdk::backdrop {
 
     <div class="mail-body">
       <div class="mail-intro">
-        <p class="eyebrow"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">./contact --draft</span></p>
+        <p class="eyebrow"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span></p>
         <h2 class="section-heading">Ready to <em>start?</em></h2>
         <p class="mail-lead">Write it here and Send hands the message to your mail app, already addressed. No form endpoint, no server, nothing stored.</p>
         <div class="mail-direct">
@@ -3496,8 +3476,7 @@ if (ham && menu) {
 })();
 
 // ─── Scroll reveal ───
-// Bidirectional: blocks rise in as you scroll down, and drop in from above as you
-// scroll back up, so the page moves both ways instead of only downwards.
+
 (function(){
   const items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   if (!items.length || reduceMotion || !('IntersectionObserver' in window)) return;
@@ -3519,7 +3498,7 @@ if (ham && menu) {
     seen.add(el);
     el.classList.add('is-visible');
   }
-  // which edge it left by decides which side it comes back from
+
   function hide(el, leftThroughTop){
     el.classList.toggle('reveal--above', leftThroughTop);
     el.classList.remove('is-visible');
