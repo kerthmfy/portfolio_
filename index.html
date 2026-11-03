@@ -10,7 +10,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   document.documentElement.classList.add('motion-ready');
 }
 </script>
-<title>Kerth Michael Yadao — IT Support &amp; Virtual Assistant | KMY.</title>
+<title>Kerth Michael Yadao — IT Specialist &amp; Virtual Assistant | KMY.</title>
 <meta name="description" content="Kerth Michael Fernandez Yadao is an IT support specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.">
 <meta name="author" content="Kerth Michael Fernandez Yadao">
 <link rel="canonical" href="https://kerthmfy.github.io/portfolio_/">
@@ -40,12 +40,12 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Kerth Michael Fernandez Yadao",
+  "name": "Kerth Michael Yadao",
   "alternateName": "KMY.",
   "url": "https://kerthmfy.github.io/portfolio_/",
   "image": "https://kerthmfy.github.io/portfolio_/og.png",
-  "jobTitle": "IT Support Specialist & Virtual Assistant",
-  "description": "Kerth Michael Fernandez Yadao is an IT support specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.",
+  "jobTitle": "IT Specialist & Virtual Assistant",
+  "description": "Kerth Michael Yadao is an IT specialist and virtual assistant based in Manila, Philippines — server administration, data management, technical support and automation for small teams.",
   "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
   "sameAs": [
     "https://www.linkedin.com/in/kerthfyadao",
@@ -150,8 +150,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
 /* ─── BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
-  scroll-behavior: auto;      /* the nav tween handles easing */
-  scroll-padding-top: 64px;   /* keeps plain hash jumps clear of the fixed nav */
+  scroll-behavior: auto;      
+  scroll-padding-top: 64px; 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -513,7 +513,7 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 .cert-item i { color: var(--primary); flex-shrink: 0; }
 
 
-/* ─── SERVICES (VA-focused) ─── */
+/* ─── SERVICES ─── */
 #services { background: var(--bg); }
 .services-intro {
   max-width: var(--content-narrow);
@@ -1294,11 +1294,7 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   TERMINAL SKIN — layered on top of the base styles above.
-   Monochrome: the "bright" colour is white (dark) / navy (light).
-   No green anywhere. Space Grotesk sets the prose, JetBrains Mono sets
-   every piece of chrome (prompts, labels, chips, nav, buttons).
-   Every knob for this layer lives in this block.
+   TERMINAL SKIN
    ══════════════════════════════════════════════════════════════════════ */
 
 /* ─── 1. TOKENS ─── */
@@ -3194,7 +3190,7 @@ dialog.cmdk::backdrop {
         </div>
         <div class="sample-body">
           <p>A native Letterboxd client for iOS 6. Browse your diary, open a film, and log what you've watched with a rating, a review, a rewatch or a like — running as an app on a 2012 iPhone.</p>
-          <p>A fun side project, and a good excuse to keep an old phone in use. It's styled to match the phone it runs on: those blue nav bars, shaped back buttons and green stars.</p>
+          <p>A fun side project, and a good excuse to keep an old phone in use.</p>
           <div class="tag-row">
             <span class="tag">Objective-C</span>
             <span class="tag">iOS 6</span>
@@ -3346,7 +3342,7 @@ if (reduceMotion) {
   const t = document.querySelector('[data-theme-toggle]');
   const rod = document.documentElement;
   const embed = document.getElementById('bandcamp-embed');
-  // Light is the default; the OS preference is intentionally ignored.
+
   let d = rod.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   rod.setAttribute('data-theme', d);
 
@@ -3529,15 +3525,12 @@ if (ham && menu) {
     el.classList.remove('is-visible');
   }
 
-  // entering fires a little before the block is properly on screen
+
   const entering = new IntersectionObserver((entries) => {
     entries.forEach(entry => { if (entry.isIntersecting) show(entry.target); });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 
-  // leaving fires only once the block is completely off screen, so nothing still
-  // partly visible ever blinks out. threshold 0 rather than a fraction, because a
-  // block taller than the window can never reach a fraction threshold — which is
-  // also how a short desktop window used to strand whole sections at opacity 0.
+
   const leaving = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) return;
@@ -3545,11 +3538,7 @@ if (ham && menu) {
     });
   }, { threshold: 0 });
 
-  // Anything at or above the fold-bottom on the first frame counts as seen, so a
-  // fast wheel flick, a Page Down or an anchor jump cannot carry a block clean
-  // past the viewport between two frames and leave it stranded. Only *unseen*
-  // blocks: once an element is in play the two observers own it, and a sweep that
-  // re-showed it would cancel the reverse animation.
+ 
   function sweep(){
     const limit = window.innerHeight * 0.94;
     items.forEach(el => {
@@ -3597,7 +3586,7 @@ if (ham && menu) {
   entering.observe(timeline);
   leaving.observe(timeline);
 
-  // a fast flick can skip the line entirely — draw it once it is above the fold
+
   let queued = false;
   function catchUp(){
     if (seen || queued) return;
@@ -3718,7 +3707,7 @@ if (ham && menu) {
   if (!body || !subj || !send) return;
 
   const ADDR = 'yadaokerthmichael@gmail.com';
-  const LONG = 1500;   // mailto URLs get truncated by some clients past this
+  const LONG = 1500;   
 
   function sync(){
     const text = body.value;
@@ -3964,7 +3953,7 @@ if (ham && menu) {
     if (settled) { cx = tx; cy = ty; }
     hero.style.setProperty('--gx', cx.toFixed(1) + 'px');
     hero.style.setProperty('--gy', cy.toFixed(1) + 'px');
-    // stop the loop once it has caught up: no idle rAF running forever
+   
     raf = settled ? 0 : requestAnimationFrame(step);
   }
 
