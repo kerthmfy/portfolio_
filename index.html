@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f1f7f9">
+<meta name="theme-color" content="#f1ece1">
 <script>
 // Set before first paint so scroll-reveal content starts hidden (never flashes in).
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
@@ -15,7 +15,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
 <meta name="author" content="Kerth Michael Fernandez Yadao">
 <link rel="canonical" href="https://kerthmfy.github.io/portfolio_/">
 
-<!-- Link previews (Slack, Discord, LinkedIn, iMessage, X) *tnx to this is a mf-ing modern website -->
+<!-- Link previews (Slack, Discord, LinkedIn, iMessage, X) -->
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="KMY.">
 <meta property="og:title" content="Kerth Michael Yadao — IT Support &amp; Virtual Assistant">
@@ -45,7 +45,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   "url": "https://kerthmfy.github.io/portfolio_/",
   "image": "https://kerthmfy.github.io/portfolio_/og.png",
   "jobTitle": "IT Support Specialist & Virtual Assistant",
-  "description": "Kerth Michael Fernandez Yadao is an IT specialist and virtual assistant based in Manila, Philippines — server administration, data management, technical support.",
+  "description": "Kerth Michael Fernandez Yadao is an IT support specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.",
   "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
   "sameAs": [
     "https://www.linkedin.com/in/kerthfyadao",
@@ -85,66 +85,72 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
   --content-wide: 1160px;
 }
 
-/* Light mode — palette sampled from favicon.png:
-   navy #0B0F33 · ice #BEE2EB · bevel #87C2D6 · aqua #4DA2BF · slate #3D6685 · face #F4F4F4 */
+/* Light mode — "letterpress": warm paper, iron-gall ink, oxide red for
+   emphasis and a dry ochre held back for numbering. The favicon is no longer
+   the source; this is authored as a print system: three hues plus paper. */
 :root, [data-theme="light"] {
-  --bg:             #f1f7f9;
-  --surface:        #f9fdfe;
-  --surface-2:      #ffffff;
-  --surface-offset: #e3eff4;
-  --divider:        #cfe2e9;
-  --border:         rgba(11,15,51,0.10);
+  --bg:             #f1ece1;
+  --surface:        #f8f3e9;
+  --surface-2:      #fffdf7;
+  --surface-offset: #e7dfd0;
+  --divider:        #d7cdba;
+  --border:         rgba(28,24,19,0.12);
 
-  --text:           #0b0f33;
-  --text-muted:     #4a5c74;
-  --text-faint:     #8a9fb2;
-  --text-inverse:   #f1f7f9;
+  --text:           #1c1814;
+  --text-muted:     #5a5349;
+  --text-faint:     #8b8175;
+  --text-inverse:   #f1ece1;
 
-  --primary:        #3d6685;
-  --primary-hover:  #2a4d68;
-  --primary-hl:     #cde5ee;
+  --primary:        #1f4b46;
+  --primary-hover:  #163a36;
+  --primary-hl:     #d9e4de;
 
-  --accent:         #0b0f33;
-  --accent-hover:   #252c58;
-  --accent-hl:      rgba(11,15,51,0.07);
-  --on-accent:      #f4f9fb;
+  --accent:         #a8471f;
+  --accent-hover:   #8a3715;
+  --accent-hl:      rgba(168,71,31,0.09);
+  --on-accent:      #fdf7ee;
 
-  /* the only hue on the page: status indicator lights */
-  --live:           #15a34a;
+  /* the third working hue, reserved for the index */
+  --index:          #8a5f0f;
 
-  --shadow-sm: 0 1px 3px rgba(11,15,51,0.07);
-  --shadow-md: 0 4px 16px rgba(11,15,51,0.10);
-  --shadow-lg: 0 12px 40px rgba(11,15,51,0.15);
+  /* one signal colour only */
+  --live:           #2a7045;
+
+  --shadow-sm: 0 1px 3px rgba(28,24,19,0.08);
+  --shadow-md: 0 4px 16px rgba(28,24,19,0.11);
+  --shadow-lg: 0 12px 40px rgba(28,24,19,0.16);
 }
 
-/* Dark mode — same favicon palette, inverted onto the navy keycap */
+/* Dark mode — the same print read under a lamp */
 [data-theme="dark"] {
-  --bg:             #080b26;
-  --surface:        #0d1233;
-  --surface-2:      #111741;
-  --surface-offset: #172047;
-  --divider:        #1e2751;
-  --border:         rgba(190,226,235,0.10);
+  --bg:             #14110d;
+  --surface:        #1a1611;
+  --surface-2:      #201b15;
+  --surface-offset: #272119;
+  --divider:        #362e24;
+  --border:         rgba(241,233,220,0.10);
 
-  --text:           #e8f2f6;
-  --text-muted:     #9db3c6;
-  --text-faint:     #5d7392;
-  --text-inverse:   #080b26;
+  --text:           #f1e9dc;
+  --text-muted:     #c0b4a3;
+  --text-faint:     #8d8172;
+  --text-inverse:   #14110d;
 
-  --primary:        #87c2d6;
-  --primary-hover:  #a9dceb;
-  --primary-hl:     #12294a;
+  --primary:        #8fc0b6;
+  --primary-hover:  #add6cd;
+  --primary-hl:     #1f3a35;
 
-  --accent:         #ffffff;
-  --accent-hover:   #d6e5f0;
-  --accent-hl:      rgba(255,255,255,0.10);
-  --on-accent:      #05081f;
+  --accent:         #e8835a;
+  --accent-hover:   #f2a17c;
+  --accent-hl:      rgba(232,131,90,0.12);
+  --on-accent:      #1a0f08;
 
-  --live:           #3fc047;
+  --index:          #d9a441;
+
+  --live:           #58b87c;
 
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.35);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.45);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.55);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.42);
+  --shadow-lg: 0 18px 50px rgba(0,0,0,0.55);
 }
 
 /* ─── BASE ─── */
@@ -512,29 +518,6 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 }
 .cert-item i { color: var(--primary); flex-shrink: 0; }
 
-.about-aside {}
-.value-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-3);
-}
-@media (max-width: 480px) { .value-grid { grid-template-columns: 1fr; } }
-.value-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5);
-}
-.value-card { transition: transform 0.35s var(--ease-soft), border-color 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft); }
-.value-card:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in oklab, var(--primary) 35%, transparent);
-  box-shadow: var(--shadow-sm);
-}
-.value-card i { color: var(--primary); margin-bottom: var(--space-3); transition: transform 0.35s var(--ease-soft); }
-.value-card:hover i { transform: scale(1.12); }
-.value-card h4 { font-size: var(--text-sm); font-weight: 500; color: var(--text); margin-bottom: var(--space-1); }
-.value-card p { font-size: var(--text-xs); color: var(--text-muted); line-height: 1.55; max-width: none; }
 
 /* ─── SERVICES (VA-focused) ─── */
 #services { background: var(--bg); }
@@ -964,12 +947,7 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 /* ─── CONTACT ─── */
 #contact {
   background: var(--bg);
-  text-align: center;
 }
-.contact-inner { max-width: var(--content-narrow); margin-inline: auto; }
-.contact-inner .section-heading { font-size: var(--text-2xl); }
-.contact-desc { font-size: var(--text-base); color: var(--text-muted); margin-bottom: var(--space-10); max-width: 48ch; margin-inline: auto; line-height: 1.8; }
-.contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-8); }
 .contact-btn {
   display: inline-flex; align-items: center; gap: var(--space-3);
   background: var(--surface);
@@ -990,9 +968,6 @@ section { padding: clamp(var(--space-16), 8vw, var(--space-24)) clamp(var(--spac
 }
 .contact-btn.primary-btn i { color: var(--on-accent); }
 .contact-btn.primary-btn:hover { background: var(--accent-hover); }
-.contact-email { font-size: var(--text-sm); color: var(--text-faint); }
-.contact-email a { color: var(--accent); text-decoration: none; }
-.contact-email a:hover { text-decoration: underline; }
 
 /* ─── FOOTER ─── */
 footer {
@@ -1034,14 +1009,14 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 :root {
   --gel-edge:   rgba(255,255,255,0.85);
   --gel-sheen:  rgba(255,255,255,0.55);
-  --gel-shade:  rgba(11,15,51,0.13);
-  --stripe:     rgba(11,15,51,0.045);
-  --btn-shade:  linear-gradient(180deg, rgba(11,15,51,0) 50%, rgba(11,15,51,0.14) 100%);
+  --gel-shade:  rgba(28,24,19,0.13);
+  --stripe:     rgba(28,24,19,0.045);
+  --btn-shade:  linear-gradient(180deg, rgba(28,24,19,0) 50%, rgba(28,24,19,0.14) 100%);
   --capsule:    linear-gradient(180deg, var(--gel-sheen), rgba(255,255,255,0) 62%);
   --card-rim:   rgba(255,255,255,0.9);
-  --card-foot:  rgba(11,15,51,0.05);
+  --card-foot:  rgba(28,24,19,0.05);
   --card-sheen: rgba(255,255,255,0.55);
-  --card-lift:  0 1px 2px rgba(11,15,51,0.05), 0 10px 24px -16px rgba(11,15,51,0.30);
+  --card-lift:  0 1px 2px rgba(28,24,19,0.05), 0 10px 24px -16px rgba(28,24,19,0.30);
 }
 [data-theme="dark"] {
   --gel-edge:   rgba(255,255,255,0.18);
@@ -1150,7 +1125,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 }
 
 /* panes: one hairline bevel, a whisper of glass, a shadow that reads as depth */
-.value-card,
 .service-card,
 .sample-card,
 .timeline-card,
@@ -1160,12 +1134,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
     inset 0 1px 0 var(--card-rim),
     inset 0 -1px 0 var(--card-foot),
     var(--card-lift);
-}
-.value-card:hover {
-  box-shadow:
-    inset 0 1px 0 var(--card-rim),
-    inset 0 -1px 0 var(--card-foot),
-    var(--shadow-sm);
 }
 .service-card:hover {
   box-shadow:
@@ -1321,7 +1289,6 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   .hero-photo:hover { scale: 1 !important; }
   .service-card:hover,
   .sample-card:hover,
-  .value-card:hover,
   .contact-btn:hover,
   .music-platform-btn:hover,
   .btn-primary:hover,
@@ -1346,21 +1313,21 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   --radius-xl: 8px; --radius-2xl: 10px;
 }
 :root, [data-theme="light"] {
-  --term-bg:      #ffffff;
-  --term-bg-soft: #f6fafc;
-  --term-line:    rgba(11,15,51,0.15);
-  --term-line-2:  rgba(11,15,51,0.07);
-  --term-dim:     #566274;
-  --term-faint:   #58697d;
-  --term-scan:    0.030;
+  --term-bg:      #fffdf8;
+  --term-bg-soft: #f8f2e6;
+  --term-line:    rgba(28,24,19,0.16);
+  --term-line-2:  rgba(28,24,19,0.07);
+  --term-dim:     #5a5349;
+  --term-faint:   #6f665a;
+  --term-scan:    0.028;
 }
 [data-theme="dark"] {
-  --term-bg:      #05081f;
-  --term-bg-soft: #0a0e2c;
-  --term-line:    rgba(190,226,235,0.22);
-  --term-line-2:  rgba(190,226,235,0.08);
-  --term-dim:     #9db3c6;
-  --term-faint:   #8497b5;
+  --term-bg:      #100d0a;
+  --term-bg-soft: #181310;
+  --term-line:    rgba(241,233,220,0.17);
+  --term-line-2:  rgba(241,233,220,0.07);
+  --term-dim:     #bdb1a0;
+  --term-faint:   #938779;
   --term-scan:    0.045;
 }
 
@@ -1429,10 +1396,10 @@ nav.scrolled { height: 48px; }
   border: 1px solid var(--term-line);
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 26px 60px -34px rgba(11,15,51,0.45);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 26px 60px -34px rgba(28,24,19,0.45);
 }
 [data-theme="dark"] .term-window {
-  box-shadow: 0 1px 0 rgba(190,226,235,0.06) inset, 0 30px 80px -40px #000;
+  box-shadow: 0 1px 0 rgba(241,233,220,0.06) inset, 0 30px 80px -40px #000;
 }
 /* scanlines over the screen */
 .term-window::after {
@@ -1662,7 +1629,7 @@ nav.scrolled { height: 48px; }
 .services-intro, .samples-note, .music-intro, .music-note { color: var(--term-dim); }
 
 /* ─── 9. PANES, CHIPS AND LISTS ─── */
-.service-card, .sample-card, .value-card, .timeline-card, .cert-item, .status-chip {
+.service-card, .sample-card, .timeline-card, .cert-item, .status-chip {
   border-radius: var(--radius-lg);
 }
 .service-card { position: relative; }
@@ -1672,8 +1639,8 @@ nav.scrolled { height: 48px; }
   letter-spacing: -0.015em;
 }
 .service-card h3::before { content: "# "; color: var(--term-faint); font-family: var(--font-mono); font-weight: 400; }
-.service-icon, .sample-header-icon, .value-card svg, .cert-item svg { color: var(--term-dim); }
-.service-icon svg, .value-card > svg { opacity: 0.85; }
+.service-icon, .sample-header-icon, .cert-item svg { color: var(--term-dim); }
+.service-icon svg
 
 /* tech chips read as [tags] */
 .stag, .tag {
@@ -1841,7 +1808,7 @@ footer {
    ══════════════════════════════════════════════════════════════════════ */
 
 /* ─── panes: cards and list rows ─── */
-.service-card, .sample-card, .value-card, .timeline-card, .cert-item {
+.service-card, .sample-card, .timeline-card, .cert-item {
   background-image:
     linear-gradient(100deg, transparent 40%,
       color-mix(in oklab, var(--accent) 10%, transparent) 50%, transparent 60%),
@@ -1854,7 +1821,7 @@ footer {
               border-color 0.35s var(--ease-soft),
               box-shadow 0.35s var(--ease-soft);
 }
-.service-card:hover, .sample-card:hover, .value-card:hover,
+.service-card:hover, .sample-card:hover, 
 .timeline-card:hover, .cert-item:hover { background-position: 10% 0, 0 0; }
 
 /* the two panes that had no pointer state of their own get one */
@@ -1926,7 +1893,7 @@ footer {
 
 /* nothing here moves for visitors who asked it not to */
 @media (prefers-reduced-motion: reduce) {
-  .service-card, .sample-card, .value-card, .timeline-card, .cert-item,
+.service-card, .sample-card, .timeline-card, .cert-item, 
   .btn-ghost, .contact-btn, .music-platform-btn, .project-link,
   .stag, .tag, .status-chip, .tool-name, .tool-level { transition: none !important; }
   .btn-ghost::before, .contact-btn::before,
@@ -2004,6 +1971,640 @@ footer {
   .shot-frame, .shot img { transition: none !important; }
   .shot:hover .shot-frame { transform: none !important; }
 }
+
+/* ─── 14. LAYOUT PASS — sticky section rail, editorial grids ─── */
+
+/* the rail's number counts sections in document order */
+body { counter-reset: sect; }
+.section-rail { counter-increment: sect; }
+.section-rail::before {
+  content: counter(sect, decimal-leading-zero);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 1024px) {
+  /* every section becomes two columns: a sticky index, and the reading column.
+     Children opt into column 2 automatically, so no extra wrappers are needed. */
+  .has-rail {
+    display: grid;
+    grid-template-columns: clamp(180px, 19vw, 250px) minmax(0, 1fr);
+    column-gap: clamp(40px, 5vw, 84px);
+    align-items: start;
+  }
+  .has-rail > * { grid-column: 2; min-width: 0; }
+  .has-rail > .section-rail {
+    grid-column: 1;
+    grid-row: 1 / span 999;
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--space-4);
+    border-top: 1px solid color-mix(in oklab, var(--text) 60%, transparent);
+  }
+  .has-rail > .section-rail::before { order: 0; margin-bottom: var(--space-5); }
+  .section-rail .section-heading {
+    order: 1;
+    font-size: clamp(1.4rem, 0.95rem + 1.15vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-5);
+  }
+  /* the command line reads as a footnote under the title, not a label above it */
+  .section-rail .eyebrow {
+    order: 2;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    font-size: 0.72rem;
+    line-height: 1.65;
+    color: var(--text-faint);
+    overflow-wrap: anywhere;
+  }
+}
+
+/* services: two uneven columns, numbered like entries in a manual */
+@media (min-width: 760px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(20px, 2.6vw, 40px);
+    row-gap: clamp(16px, 2vw, 24px);
+    counter-reset: svc;
+  }
+  .services-grid > .service-card { counter-increment: svc; }
+  .service-card > h3::before {
+    content: counter(svc, decimal-leading-zero);
+    display: inline-block;
+    margin-right: 0.7em;
+    font-family: var(--font-mono);
+    font-size: 0.66em;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+    vertical-align: 0.14em;
+  }
+  .services-grid > .service-card:nth-child(even) { margin-top: clamp(24px, 3.4vw, 52px); }
+}
+
+/* projects: unequal columns and a drop on the second card, so they stop reading as tiles */
+@media (min-width: 900px) {
+  .samples-grid {
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    align-items: start;
+  }
+  .samples-grid > .sample-card:nth-child(2) { margin-top: clamp(28px, 4vw, 64px); }
+}
+
+/* about: one column now that the value cards are gone */
+#about .about-grid { grid-template-columns: minmax(0, 1fr); }
+
+
+/* the rail's column becomes a real document margin: one hairline running the
+   full height of the section, with the sticky index pinned inside it */
+@media (min-width: 1024px) {
+  .has-rail { position: relative; }
+  .has-rail::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: calc(clamp(180px, 19vw, 250px) + clamp(40px, 5vw, 84px) / 2);
+    width: 1px;
+    background: var(--border);
+    pointer-events: none;
+  }
+}/* 1024px is the tight spot: the reading column leaves 293px inside the Matinee
+   card and the strip's floor was 296px, so it scrolled by 3px for no reason */
+.shot { min-width: 88px; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   15. HERO — the screen, not the card
+   The old hero was a centred card: prompt, name, five-row spec list, three
+   buttons and a portrait all stacked in one column at roughly equal weight —
+   which is exactly what made it read as template output. Here the window
+   stops being a floating card (square corners, no drop shadow, wider than the
+   reading column) and its interior becomes a two-plane composition: a tall
+   portrait plate on the right, the name and actions on the left, and the spec
+   list re-cut into one status bar running the full width of the screen floor.
+   All CSS. .hero-content goes display:contents at this width so its children
+   can be placed straight onto .hero-inner's grid — the same trick section 13
+   already uses on phones — which leaves the markup, the boot class order and
+   the typewriter sequence exactly as they are.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .hero {
+    padding-inline: clamp(16px, 2.6vw, 40px);
+    padding-top: clamp(84px, 7vw, 112px);
+    padding-bottom: clamp(40px, 5vw, 72px);
+  }
+
+  /* wider than the 1160px reading column, so the screen reads as a console
+     the content sits on rather than a box the content fills */
+  .hero .term-window {
+    max-width: min(1560px, 100%);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  [data-theme="dark"] .hero .term-window { box-shadow: none; }
+
+  /* the screen floor belongs to the status bar, not to the padding */
+  .term-body { padding-bottom: 0; }
+
+  /* the prompt keeps the reading axis even though the screen is wider */
+  .term-cmd { max-width: var(--content-wide); margin-inline: auto; }
+
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr) clamp(196px, 20vw, 288px);
+    column-gap: clamp(28px, 3.6vw, 60px);
+    row-gap: 0;
+    align-items: start;
+  }
+  .hero-content { display: contents; }
+  .hero-content > .boot--1 { grid-column: 1; grid-row: 1; }
+  .hero-content > .hero-ctas { grid-column: 1; grid-row: 2; }
+  .hero-content > .term-ready { grid-column: 1; grid-row: 3; align-self: end; }
+
+  /* same type size — tighter setting, so the name behaves like a poster */
+  .hero h1 { line-height: 0.9; letter-spacing: -0.045em; }
+  .hero-desc { margin-bottom: clamp(var(--space-6), 2.4vw, var(--space-8)); }
+
+  /* the portrait becomes a plate: taller than wide, hung from the name line
+     down past the buttons, no circle to fight the rectangle of the screen */
+  .hero-photo-col {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: stretch;
+    align-items: stretch;
+    animation: none;
+  }
+  .photo-frame { width: 100%; padding: 9px; }
+  .hero-photo { aspect-ratio: 4 / 5; object-position: center 15%; }
+  .photo-caption { text-align: right; }
+
+  /* the spec list: one hairline over five cells, vertical rules between them,
+     flush with the screen's own sides and floor */
+  .hero-content > .term-spec {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    display: grid;
+    grid-template-columns: 1.05fr 1.9fr 1.2fr 0.88fr 1.25fr;
+    margin: clamp(30px, 3.2vw, 46px) calc(-1 * clamp(22px, 3.4vw, 42px)) 0;
+    border-top: 1px solid var(--term-line-2);
+    background: color-mix(in oklab, var(--term-bg-soft) 55%, transparent);
+    max-width: none;
+  }
+  .hero-content > .term-spec .term-spec-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: clamp(15px, 1.6vw, 22px) clamp(16px, 1.9vw, 28px);
+    border-top: 0;
+    border-left: 1px solid var(--term-line-2);
+  }
+  .hero-content > .term-spec .term-spec-row:first-child { border-left: 0; }
+  .hero-content > .term-spec dt { font-size: 0.6rem; letter-spacing: 0.2em; }
+  .hero-content > .term-spec dd { font-size: 0.72rem; line-height: 1.5; gap: 0.5ch; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   16. CONTACT — the last command
+   Every other section reports; this one hands over the keyboard. Instead of
+   the centred "Ready to start?" block with three buttons, the dossier closes
+   with a compose window: the visitor writes the message in place and Send
+   assembles a mailto from the subject and body. No endpoint, no storage, no
+   third-party form — the message is local until their mail client opens. The
+   window reuses the terminal chrome, so the page ends on the screen it began
+   on, and the bar carries the 07 the rails stop at.
+   ══════════════════════════════════════════════════════════════════════ */
+#contact { text-align: start; }
+#contact .mail-window {
+  max-width: var(--content-wide);
+  margin-inline: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* you read and type in here: keep the chrome, drop the glass */
+#contact .mail-window::after,
+#contact .mail-window::before { display: none; }
+
+.mail-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  align-items: stretch;
+}
+.mail-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 3vw, 42px);
+  border-right: 1px solid var(--term-line-2);
+}
+.mail-intro .eyebrow { margin-bottom: var(--space-3); }
+.mail-intro .section-heading { margin-bottom: var(--space-3); text-align: start; }
+.mail-lead {
+  max-width: 36ch;
+  font-size: var(--text-sm);
+  line-height: 1.75;
+  color: var(--term-dim);
+}
+.mail-direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: clamp(var(--space-5), 3vw, var(--space-8));
+}
+.mail-sign {
+  margin-top: auto;
+  padding-top: var(--space-8);
+  font-size: var(--text-xs);
+  color: var(--term-faint);
+}
+
+/* the draft itself: three keyed rows and a footer, ruled like the spec strip */
+.draft {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: clamp(24px, 3vw, 42px);
+}
+.draft-head {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--term-line-2);
+  font-size: 0.8rem;
+}
+.draft-head:first-child { padding-top: 0; }
+.draft-key {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--term-faint);
+}
+.draft-val {
+  font-size: 0.78rem;
+  color: var(--term-dim);
+  overflow-wrap: anywhere;
+}
+.draft-input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+}
+.draft-input:focus-visible,
+.draft-body:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.draft-msg {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding-block: 1.1rem;
+}
+.draft-body {
+  width: 100%;
+  min-height: 9.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  resize: none;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.draft-body::placeholder { color: var(--term-faint); }
+.draft-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: 1rem;
+  border-top: 1px solid var(--term-line-2);
+}
+.draft-count {
+  max-width: 40ch;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  line-height: 1.5;
+  color: var(--term-faint);
+}
+.draft-send { flex: none; }
+
+@media (max-width: 880px) {
+  .mail-body { grid-template-columns: minmax(0, 1fr); }
+  .mail-intro { border-right: 0; border-bottom: 1px solid var(--term-line-2); }
+  .mail-sign { padding-top: var(--space-6); }
+  .draft-head, .draft-msg { grid-template-columns: 3rem minmax(0, 1fr); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   17. PORTRAIT — the dossier when it fits in one hand
+   Below 1024px everything that carries the desktop identity used to collapse
+   into plain stacked blocks: the rail's numbering survived as a bare number,
+   the command line went back to being an uppercase label, and the status bar
+   reverted to five stacked rows. This pass translates the system instead of
+   dropping it — a ruled kicker line (index + command) over every section
+   title, and an instrument panel in the hero where the spec list used to be.
+   Pure CSS, no new markup, and nothing here applies at 1024px or above.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+
+  /* the rail, rotated into a kicker: a hairline, the index, the command.
+     Title underneath, spanning both columns. */
+  .section-rail {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.85rem;
+    align-items: baseline;
+    padding-top: var(--space-4);
+    margin-bottom: 0;
+    border-top: 1px solid color-mix(in oklab, var(--text) 60%, transparent);
+  }
+  .section-rail::before {
+    grid-column: 1;
+    margin: 0;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+  .section-rail .eyebrow {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    font-size: 0.7rem;
+    line-height: 1.55;
+    color: var(--text-faint);
+  }
+  .section-rail .section-heading {
+    grid-column: 1 / -1;
+    margin-top: var(--space-4);
+  }
+
+  /* the hero spec list becomes a ruled panel: two columns, the status cell
+     running the full width underneath as a footer row */
+  .hero-content .term-spec {
+    max-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--term-line-2);
+    border-left: 1px solid var(--term-line-2);
+  }
+  .hero-content .term-spec-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 0.72rem 0.85rem;
+    border-top: 0;
+    border-left: 0;
+    border-right: 1px solid var(--term-line-2);
+    border-bottom: 1px solid var(--term-line-2);
+  }
+  .hero-content .term-spec-row:last-child { grid-column: 1 / -1; }
+  .hero-content .term-spec dt { font-size: 0.58rem; letter-spacing: 0.16em; }
+  .hero-content .term-spec dd { font-size: 0.72rem; line-height: 1.45; gap: 0.45ch; }
+}
+
+/* the numbered-manual voice of the service grid, carried down to phones:
+   below 760px the cards used to fall back to a generic "# " bullet */
+@media (max-width: 759px) {
+  .services-grid { counter-reset: svc; }
+  .services-grid > .service-card { counter-increment: svc; }
+  .service-card > h3::before {
+    content: counter(svc, decimal-leading-zero);
+    display: inline-block;
+    margin-right: 0.6em;
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    letter-spacing: 0.1em;
+    color: var(--text-faint);
+    vertical-align: 0.1em;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   18. SCREENSHOT VIEWER — the card is a contact sheet, this is the print
+   The three Matinee shots render at roughly 120px wide inside the strip, so
+   the detail is never actually visible. Each thumbnail is a link to its own
+   file: without JavaScript it opens the image the old way; with it, the click
+   is captured into a native <dialog>, which gives focus trapping, Escape and
+   a top-layer backdrop for free. The image is capped by both viewport axes so
+   a portrait screenshot never crops and never upscales past 78vh.
+   ══════════════════════════════════════════════════════════════════════ */
+.shot-open { display: block; cursor: zoom-in; }
+.shot-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+html.viewer-open { overflow: hidden; }
+
+.shot-viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: clamp(14px, 3vw, 32px);
+  border: 0;
+  background: transparent;
+  color: #f4ede1;
+}
+/* only when open: author display rules would otherwise defeat the UA's
+   dialog:not([open]) { display: none } */
+.shot-viewer[open] { display: grid; place-items: center; }
+.shot-viewer::backdrop {
+  background: color-mix(in oklab, #14100c 94%, transparent);
+  backdrop-filter: blur(6px);
+}
+.shot-viewer-inner {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  min-height: 0;
+  max-height: 100%;
+  margin: 0;
+}
+.shot-viewer img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 900px);
+  max-height: 78vh;
+  object-fit: contain;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 30px 90px -30px #000;
+}
+.shot-viewer figcaption {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+.shot-viewer-hint {
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(234, 244, 248, 0.45);
+}
+.shot-viewer-close {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1ece1;
+  font: 400 0.95rem/1 var(--font-mono);
+  cursor: pointer;
+  transition: background 0.25s var(--ease-soft), border-color 0.25s var(--ease-soft);
+}
+.shot-viewer-close:hover { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.6); }
+.shot-viewer-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .shot-viewer-close { transition: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   19. MOTION — printed, not animated
+   The old system had one gesture: everything faded up 26px. That sameness is
+   what reads as generated. This replaces it with three moves that belong to
+   the page — a heading prints down through a mask, a rule draws itself, a
+   print develops in the tray — plus staggered beats so a grid arrives as a
+   sequence rather than a slab. Nothing bounces, nothing spins, every effect
+   is one-shot, and all of it is gated behind .motion-ready, which the head
+   only adds when the visitor has not asked for reduced motion.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* 1. section titles print downward. The mask is held at -20%/-12% on the
+   other three edges so italic overhang and descenders are never clipped in
+   the resting state — only the bottom edge travels. */
+.motion-ready .section-heading.reveal {
+  transition:
+    clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s linear;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.motion-ready .section-heading.reveal:not(.is-visible) {
+  opacity: 1;
+  transform: translateY(0.35em);
+  clip-path: inset(-20% -12% 115% -12%);
+}
+.motion-ready .section-heading.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(-20% -12% -20% -12%);
+}
+
+/* 2. the rail's top rule draws across as the heading arrives. Guarded by
+   @supports so a browser without :has keeps its static border, and scoped to
+   position:relative only on phones — the desktop rail must stay sticky. */
+@supports selector(:has(*)) {
+  @media (max-width: 1023px) {
+    .motion-ready .section-rail { position: relative; }
+  }
+  .motion-ready .section-rail { border-top-color: transparent; }
+  .motion-ready .section-rail::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: color-mix(in oklab, var(--text) 60%, transparent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .motion-ready .section-rail:has(.is-visible)::after { transform: scaleX(1); }
+}
+
+/* 3. the portrait develops: a print sliding out of the tray, top edge first */
+@keyframes print-develop {
+  from { clip-path: inset(-2px -2px 100% -2px); }
+  to   { clip-path: inset(-2px); }
+}
+.motion-ready .hero-photo-col .photo-frame {
+  animation: print-develop 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.62s both;
+}
+
+/* 4. the contact window powers on the same way, once, when it scrolls in */
+.motion-ready .mail-window.reveal {
+  transition:
+    clip-path 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.motion-ready .mail-window.reveal:not(.is-visible) {
+  opacity: 1;
+  transform: translateY(12px);
+  clip-path: inset(0 0 100% 0);
+}
+.motion-ready .mail-window.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0);
+}
+
+/* 5. groups arrive in beats, not as one slab */
+.motion-ready .services-grid > .service-card:nth-child(2) { --reveal-delay: 70ms; }
+.motion-ready .services-grid > .service-card:nth-child(3) { --reveal-delay: 140ms; }
+.motion-ready .services-grid > .service-card:nth-child(4) { --reveal-delay: 210ms; }
+.motion-ready .services-grid > .service-card:nth-child(5) { --reveal-delay: 280ms; }
+.motion-ready .services-grid > .service-card:nth-child(6) { --reveal-delay: 350ms; }
+.motion-ready .samples-grid > .sample-card:nth-child(2) { --reveal-delay: 110ms; }
+.motion-ready .timeline-item:nth-child(2) { --reveal-delay: 90ms; }
+.motion-ready .timeline-item:nth-child(3) { --reveal-delay: 180ms; }
+
+/* 6. each manual number locks in behind its card */
+@keyframes index-lock {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: none; }
+}
+.motion-ready .services-grid > .service-card.is-visible h3::before {
+  animation: index-lock 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
+}
+
+/* 7. the button caret advances a step under the pointer */
+.btn-primary::before { transition: translate 0.25s var(--ease-soft); }
+.btn-primary:hover::before { translate: 2px 0; }
+
+/* 8. belt and braces — the .motion-ready gate already covers this, but a
+   heading must never be left clipped if that class ever leaks through */
+@media (prefers-reduced-motion: reduce) {
+  .section-heading.reveal,
+  .mail-window.reveal { clip-path: none !important; transform: none !important; }
+  .section-rail::after { display: none !important; }
+  .hero-photo-col .photo-frame { animation: none !important; clip-path: none !important; }
+  .btn-primary::before { transition: none !important; translate: none !important; }
+}
+
+
+/* 9. body copy travels less than the old 26px — a card should settle into
+   place, not fly in. Headings and the contact window keep their own masks
+   because those selectors are more specific, and .reveal--above (0,4,0)
+   still outranks this rule. */
+.motion-ready .reveal:not(.is-visible) { transform: translateY(14px); }
+
+
+/* the index carries the third hue, never the body copy */
+.section-rail::before,
+.service-card > h3::before { color: var(--index); }
+
 </style>
 </head>
 <body>
@@ -2128,9 +2729,11 @@ footer {
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./about.txt</span></p>
-    <h2 class="section-heading reveal">From <em>corporate</em><br>to your remote team</h2>
+  <div class="container has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./about.txt</span></p>
+      <h2 class="section-heading reveal">From <em>corporate</em><br>to your remote team</h2>
+  </div>
     <div class="about-grid">
       <div class="reveal">
         <div class="about-body">
@@ -2160,39 +2763,17 @@ footer {
         </div>
       </div>
 
-      <div class="about-aside reveal">
-        <div class="value-grid">
-          <div class="value-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-clock" style="width:20px;height:20px;"><path d="M6 2h12v2H6zM2 6h2v12H2zm18 0h2v12h-2zm-2-2h2v2h-2zM4 4h2v2H4zm2 18h12v-2H6zm12-2h2v-2h-2zM4 20h2v-2H4zm7-14h2v7h-2zm2 7h2v2h-2zm2 2h2v2h-2z"/></svg>
-            <h4>Available Full-Time</h4>
-            <p>Ready for 40-hour/week remote engagements or part-time VA roles</p>
-          </div>
-          <div class="value-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-globe" style="width:20px;height:20px;"><path d="M6 2h12v2H6zm0 18h12v2H6zM4 4h2v2H4zm5 0h2v2H9zm0 14h2v2H9zm4 0h2v2h-2zM7 6h2v12H7zm8 0h2v12h-2zm-2-2h2v2h-2zm7 0h-2v2h2zM2 6h2v12H2zm20 0h-2v12h2zM4 18h2v2H4zm16 0h-2v2h2z M3 11h18v2H3z"/></svg>
-            <h4>English Fluent</h4>
-            <p>Strong written and spoken communication with a professional tone</p>
-          </div>
-          <div class="value-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-zap" style="width:20px;height:20px;"><path d="M4 13h8v6h2v2h-2v2h-2v-8H2v-4h2v2Zm12 6h-2v-2h2v2Zm2-2h-2v-2h2v2Zm2-2h-2v-2h2v2Zm-6-6h8v4h-2v-2h-8V5h-2V3h2V1h2v8Zm-8 2H4V9h2v2Zm2-2H6V7h2v2Zm2-2H8V5h2v2Z"/></svg>
-            <h4>Tech-Ready</h4>
-            <p>IT background + CRM work history</p>
-          </div>
-          <div class="value-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-chart" style="width:20px;height:20px;"><path d="M4 2h16v2H4zm0 18h16v2H4zM2 4h2v16H2zm18 0h2v16h-2zM7 11h2v6H7zm4-4h2v10h-2zm4 6h2v4h-2z"/></svg>
-            <h4>Process-Minded</h4>
-            <p>Lean Six Sigma training means I think in systems, not just tasks</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="container-wide">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">ls ./services</span></p>
-    <h2 class="section-heading reveal">How I can <em>help you</em></h2>
+  <div class="container-wide has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">ls ./services</span></p>
+      <h2 class="section-heading reveal">How I can <em>help you</em></h2>
+  </div>
     <p class="services-intro reveal">Every skill below comes from two years of actual corporate work and here's what I bring to the table.</p>
     <div class="services-grid">
 
@@ -2272,9 +2853,11 @@ footer {
 
 <!-- TOOLS -->
 <section id="tools">
-  <div class="container">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./stack.txt</span></p>
-    <h2 class="section-heading reveal">Tools I <em>know</em></h2>
+  <div class="container has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./stack.txt</span></p>
+      <h2 class="section-heading reveal">Tools I <em>know</em></h2>
+  </div>
     <div class="tools-section-grid">
 
       <div class="tool-group reveal">
@@ -2336,9 +2919,11 @@ footer {
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="container-wide">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./experience.log</span></p>
-    <h2 class="section-heading reveal">Work <em>Experience</em></h2>
+  <div class="container-wide has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./experience.log</span></p>
+      <h2 class="section-heading reveal">Work <em>Experience</em></h2>
+  </div>
     <div class="timeline">
 
       <div class="timeline-item reveal">
@@ -2405,9 +2990,11 @@ footer {
 
 <!-- TECHNICAL PROJECTS -->
 <section id="projects">
-  <div class="container-wide">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">ls ./projects</span></p>
-    <h2 class="section-heading reveal">Things I <em>build</em></h2>
+  <div class="container-wide has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">ls ./projects</span></p>
+      <h2 class="section-heading reveal">Things I <em>build</em></h2>
+  </div>
     <p class="samples-note reveal">Two projects running on hardware I own and control. One keeps my data off other people's servers; the other keeps a 2012 phone useful.</p>
     <div class="samples-grid">
 
@@ -2463,22 +3050,22 @@ footer {
           <div class="shot-strip">
             <figure class="shot">
               <div class="shot-frame">
-                <img src="./matinee-diary.jpg" alt="Diary, with the orb mark as the only navigation title"
-                     width="400" height="600" loading="lazy" decoding="async">
+                <a class="shot-open" href="./matinee-diary.jpg" aria-label="View screenshot full size"><img src="./matinee-diary.jpg" alt="Diary, with the orb mark as the only navigation title"
+                     width="400" height="600" loading="lazy" decoding="async"></a>
               </div>
               <figcaption class="shot-caption">diary</figcaption>
             </figure>
             <figure class="shot">
               <div class="shot-frame">
-                <img src="./matinee-film.jpg" alt="Film detail with a shaped iOS 6 back button"
-                     width="400" height="600" loading="lazy" decoding="async">
+                <a class="shot-open" href="./matinee-film.jpg" aria-label="View screenshot full size"><img src="./matinee-film.jpg" alt="Film detail with a shaped iOS 6 back button"
+                     width="400" height="600" loading="lazy" decoding="async"></a>
               </div>
               <figcaption class="shot-caption">film</figcaption>
             </figure>
             <figure class="shot">
               <div class="shot-frame">
-                <img src="./matinee-log.jpg" alt="Log sheet with green stars"
-                     width="400" height="600" loading="lazy" decoding="async">
+                <a class="shot-open" href="./matinee-log.jpg" aria-label="View screenshot full size"><img src="./matinee-log.jpg" alt="Log sheet with green stars"
+                     width="400" height="600" loading="lazy" decoding="async"></a>
               </div>
               <figcaption class="shot-caption">log-sheet</figcaption>
             </figure>
@@ -2494,9 +3081,11 @@ footer {
 
 <!-- MUSIC -->
 <section id="music">
-  <div class="container-wide">
-    <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./music.txt</span></p>
-    <h2 class="section-heading reveal">Music &amp; <em>Creativity</em></h2>
+  <div class="container-wide has-rail">
+    <div class="section-rail">
+  <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./music.txt</span></p>
+      <h2 class="section-heading reveal">Music &amp; <em>Creativity</em></h2>
+  </div>
     <p class="music-intro reveal">Outside of work, I compose and produce original music. My debut album <em>Trajectories,</em> a personal project of mine that I'm genuinely proud of. </p>
     <div class="music-grid reveal">
       <div class="music-embed-col">
@@ -2529,25 +3118,47 @@ footer {
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-inner">
-    <p class="eyebrow reveal" style="justify-content:center;"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">./contact --now</span></p>
-    <h2 class="section-heading reveal">Ready to <em>start?</em></h2>
-    <p class="contact-desc reveal">If you need someone reliable — feel free to reach out.</p>
-    <div class="contact-links reveal">
-      <a href="mailto:yadaokerthmichael@gmail.com" class="contact-btn primary-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-mail" style="width:16px;height:16px;"><path d="M6 8h2v2H6zm2 2h2v2H8zm10-2h-2v2h2zm-2 2h-2v2h2zm-6 2h4v2h-4zM2 6h2v12H2zm18 0h2v12h-2zM4 4h16v2H4zm0 14h16v2H4z"/></svg>
-        Email Me
-      </a>
-      <a href="https://www.linkedin.com/in/kerthfyadao" target="_blank" rel="noopener noreferrer" class="contact-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-linkedin" style="width:16px;height:16px;"><path d="M7 22H1V8h6v14Zm12-12h-8v10h2v-8h4v2h-2v8H9V8h10v2Zm4 12h-6v-8h2v6h2v-8h2v10ZM3 20h2V10H3v10Zm18-8h-2v-2h2v2ZM5 7H3V5h2v2ZM3 5H1V3h2v2Zm4 0H5V3h2v2ZM5 3H3V1h2v2Z"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://www.onlinejobs.ph/jobseekers/info/4385588" target="_blank" rel="noopener noreferrer" class="contact-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-briefcase" style="width:16px;height:16px;"><path d="M2 8h2v12H2zm18 0h2v12h-2zM4 6h16v2H4zm0 14h16v2H4zM8 4h2v2H8zm2-2h4v2h-4zm4 2h2v2h-2z"/></svg>
-        OnlineJobs.ph
-      </a>
+  <div class="term-window mail-window reveal">
+    <div class="term-bar">
+      <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="term-bar-title">kerth@portfolio: ~ &mdash; compose</span>
+      <span class="term-bar-shell" aria-hidden="true">07 / contact</span>
     </div>
-    <p class="contact-email reveal">i make it happen if you'd give me a chance.</p>
+
+    <div class="mail-body">
+      <div class="mail-intro">
+        <p class="eyebrow"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">./contact --draft</span></p>
+        <h2 class="section-heading">Ready to <em>start?</em></h2>
+        <p class="mail-lead">Write it here and Send hands the message to your mail app, already addressed. No form endpoint, no server, nothing stored.</p>
+        <div class="mail-direct">
+          <a class="contact-btn" href="https://www.linkedin.com/in/kerthfyadao" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="contact-btn" href="https://www.onlinejobs.ph/jobseekers/info/4385588" target="_blank" rel="noopener noreferrer">OnlineJobs.ph</a>
+        </div>
+        <p class="mail-sign">i make it happen if you&rsquo;d give me a chance.</p>
+      </div>
+
+      <div class="draft" id="mail-draft">
+        <div class="draft-head">
+          <span class="draft-key">to</span>
+          <span class="draft-val">Kerth Michael Yadao &lt;yadaokerthmichael@gmail.com&gt;</span>
+        </div>
+
+        <label class="draft-head draft-head--field" for="draft-subject">
+          <span class="draft-key">subj</span>
+          <input class="draft-input" id="draft-subject" type="text" value="Hello Kerth &mdash; portfolio inquiry" autocomplete="off" spellcheck="false">
+        </label>
+
+        <label class="draft-msg" for="draft-body">
+          <span class="draft-key">msg</span>
+          <textarea class="draft-body" id="draft-body" rows="7" placeholder="Hi Kerth — we&rsquo;re looking for someone who…"></textarea>
+        </label>
+
+        <div class="draft-foot">
+          <p class="draft-count" id="draft-count">// 0 words &middot; nothing leaves this page until you send</p>
+          <a class="btn-primary draft-send" id="draft-send" href="mailto:yadaokerthmichael@gmail.com?subject=Hello%20Kerth%20%E2%80%94%20portfolio%20inquiry">Send</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2586,7 +3197,7 @@ if (reduceMotion) {
 
   const shell = document.querySelector('meta[name="theme-color"]');
   function syncShell(){
-    if (shell) shell.setAttribute('content', d === 'dark' ? '#080b26' : '#f1f7f9');
+    if (shell) shell.setAttribute('content', d === 'dark' ? '#14110d' : '#f1ece1');
   }
 
   function syncEmbed(){
@@ -2941,5 +3552,88 @@ if (ham && menu) {
 
 </script>
 
+
+<script>
+// ─── Contact draft: Send assembles the mailto from what was typed ───
+(function(){
+  const body  = document.getElementById('draft-body');
+  const subj  = document.getElementById('draft-subject');
+  const send  = document.getElementById('draft-send');
+  const count = document.getElementById('draft-count');
+  if (!body || !subj || !send) return;
+
+  const ADDR = 'yadaokerthmichael@gmail.com';
+  const LONG = 1500;   // mailto URLs get truncated by some clients past this
+
+  function sync(){
+    const text = body.value;
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    send.href = 'mailto:' + ADDR
+      + '?subject=' + encodeURIComponent(subj.value.trim() || 'Hello Kerth')
+      + (text.trim() ? '&body=' + encodeURIComponent(text) : '');
+    if (!count) return;
+    count.textContent = '// ' + words + (words === 1 ? ' word' : ' words')
+      + (text.length > LONG
+        ? ' · long message — if your mail app truncates it, use the address above'
+        : ' · nothing leaves this page until you send');
+  }
+
+  body.addEventListener('input', sync);
+  subj.addEventListener('input', sync);
+  sync();
+})();
+</script>
+
+
+<dialog class="shot-viewer" id="shot-viewer" aria-label="Screenshot viewer">
+  <figure class="shot-viewer-inner">
+    <img id="shot-viewer-img" alt="" decoding="async">
+    <figcaption>
+      <span id="shot-viewer-cap"></span>
+      <span class="shot-viewer-hint">esc to close</span>
+      <button type="button" class="shot-viewer-close" id="shot-viewer-close" aria-label="Close viewer">&#215;</button>
+    </figcaption>
+  </figure>
+</dialog>
+
+<script>
+// ─── Matinee screenshots: open the print, not the thumbnail ───
+(function(){
+  const dlg = document.getElementById('shot-viewer');
+  // no dialog support? leave the links alone — they open the image file
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  const img      = document.getElementById('shot-viewer-img');
+  const cap      = document.getElementById('shot-viewer-cap');
+  const closeBtn = document.getElementById('shot-viewer-close');
+  if (!img || !cap || !closeBtn) return;
+
+  let opener = null;
+
+  document.addEventListener('click', function(e){
+    const link = e.target.closest('.shot-open');
+    if (!link) return;
+    e.preventDefault();
+    const shot = link.querySelector('img');
+    if (!shot) return;
+
+    opener = link;
+    img.src = link.getAttribute('href');
+    img.alt = shot.getAttribute('alt') || '';
+    const label = link.closest('.shot') && link.closest('.shot').querySelector('.shot-caption');
+    cap.textContent = 'matinee — ' + (label ? label.textContent.trim() : 'screenshot');
+
+    document.documentElement.classList.add('viewer-open');
+    dlg.showModal();
+    closeBtn.focus();
+  });
+
+  closeBtn.addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', function(){
+    document.documentElement.classList.remove('viewer-open');
+    if (opener) opener.focus();
+  });
+})();
+</script>
 </body>
 </html>
