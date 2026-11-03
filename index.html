@@ -40,12 +40,12 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Kerth Michael Yadao",
+  "name": "Kerth Michael Fernandez Yadao",
   "alternateName": "KMY.",
   "url": "https://kerthmfy.github.io/portfolio_/",
   "image": "https://kerthmfy.github.io/portfolio_/og.png",
   "jobTitle": "IT Support Specialist & Virtual Assistant",
-  "description": "Kerth Michael Yadao is an IT specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.",
+  "description": "Kerth Michael Fernandez Yadao is an IT support specialist and virtual assistant based in Manila, Philippines — CRM administration, data management, technical support and automation for small teams.",
   "address": { "@type": "PostalAddress", "addressLocality": "Manila", "addressCountry": "PH" },
   "sameAs": [
     "https://www.linkedin.com/in/kerthfyadao",
@@ -150,8 +150,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObse
 /* ─── BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
-  scroll-behavior: auto;     
-  scroll-padding-top: 64px;  
+  scroll-behavior: auto;      /* the nav tween handles easing */
+  scroll-padding-top: 64px;   /* keeps plain hash jumps clear of the fixed nav */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -2620,6 +2620,144 @@ html.viewer-open { overflow: hidden; }
   background-origin: content-box;
 }
 
+/* ─── 21. COMMAND PALETTE — the site answers to a shell ─── */
+
+/* The favicon is a keycap, so the hint is a keycap: one key, one line. */
+.cmd-hint {
+  margin-inline-start: 0.7rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--term-faint);
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+.cmd-hint kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding-inline: 0.24rem;
+  border: 1px solid var(--term-line);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--term-bg-soft);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  line-height: 1;
+  color: var(--term-dim);
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.cmd-hint:hover { color: var(--text); }
+.cmd-hint:hover kbd { border-color: var(--accent); color: var(--accent); }
+.cmd-hint:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
+
+dialog.cmdk {
+  width: min(34rem, calc(100vw - 2rem));
+  max-width: none;
+  margin: 12vh auto auto;
+  padding: 0;
+}
+dialog.cmdk:not([open]) { display: none; }
+/* a six-row panel wants a clean screen: no refresh sweep, no scanlines */
+dialog.cmdk::before,
+dialog.cmdk::after { display: none; }
+dialog.cmdk::backdrop {
+  background: rgba(8, 11, 38, 0.52);
+  backdrop-filter: blur(3px);
+}
+.cmdk-body { padding: 0.9rem 1rem 0.7rem; }
+.cmdk-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--term-line-2);
+  font-family: var(--font-mono);
+}
+.cmdk-input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.cmdk-input:focus { outline: none; }
+.cmdk-input::placeholder { color: var(--term-faint); }
+.cmdk-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.45rem 0 0;
+  max-height: 15rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.cmdk-item {
+  display: grid;
+  grid-template-columns: minmax(5.2rem, auto) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: baseline;
+  padding: 0.4rem 0.55rem;
+  margin-inline: -0.55rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.76rem;
+}
+.cmdk-name {
+  font-family: var(--font-mono);
+  color: var(--text);
+  white-space: nowrap;
+}
+/* the marker slot is always there, so selecting a row never shifts its text */
+.cmdk-name::before {
+  content: "\203a";
+  margin-right: 0.3rem;
+  color: transparent;
+  transition: color 140ms ease;
+}
+.cmdk-desc { color: var(--term-dim); font-size: 0.71rem; }
+.cmdk-item[aria-selected="true"] { background: var(--term-bg-soft); }
+.cmdk-item[aria-selected="true"] .cmdk-name { color: var(--accent); }
+.cmdk-item[aria-selected="true"] .cmdk-name::before { color: var(--accent); }
+.cmdk-empty {
+  padding: 0.5rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--term-faint);
+}
+.cmdk-note {
+  padding-top: 0.55rem;
+  margin-top: 0.35rem;
+  border-top: 1px solid var(--term-line-2);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: var(--term-faint);
+}
+.cmdk-note.is-reply { color: var(--accent); }
+
+@media (max-width: 560px) {
+  dialog.cmdk { margin-top: 8vh; }
+  .cmdk-item { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .cmdk-desc { font-size: 0.66rem; }
+}
+
+/* ─── 22. HERO — the aura leans toward the pointer ─── */
+
+/* The only pointer response on the site, and it adds nothing to the page: the
+   gradient that is already drifting shifts a couple of dozen pixels toward the
+   cursor. It runs on the independent `translate` property so aura-drift, which
+   owns `transform`, keeps turning underneath it. Nothing follows you down the
+   page, nothing appears, nothing glows. */
+.hero-glow { translate: var(--gx, 0px) var(--gy, 0px); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow { translate: none !important; }
+}
+
 </style>
 </head>
 <body>
@@ -2719,7 +2857,9 @@ html.viewer-open { overflow: hidden; }
         </a>
       </div>
 
-          <p class="term-ready boot boot--4">System ready. Scroll to explore.<span class="caret" aria-hidden="true"></span></p>
+          <p class="term-ready boot boot--4">System ready. Scroll to explore.<span class="caret" aria-hidden="true"></span>
+            <button type="button" class="cmd-hint" data-cmdk-open aria-label="Open the command palette"><kbd>/</kbd> commands</button>
+          </p>
         </div>
 
         <div class="hero-photo-col">
@@ -3360,7 +3500,7 @@ if (ham && menu) {
 })();
 
 // ─── Scroll reveal ───
-// Bidirectional: blocks rise in as scroll down, and drop in from above as you
+// Bidirectional: blocks rise in as you scroll down, and drop in from above as you
 // scroll back up, so the page moves both ways instead of only downwards.
 (function(){
   const items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
@@ -3600,6 +3740,25 @@ if (ham && menu) {
 </script>
 
 
+<dialog class="term-window cmdk" id="cmdk" aria-label="Command palette">
+  <div class="term-bar">
+    <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="term-bar-title">kerth@portfolio: ~ &mdash; commands</span>
+    <span class="term-bar-shell" aria-hidden="true">esc</span>
+  </div>
+  <div class="cmdk-body">
+    <label class="cmdk-field" for="cmdk-input">
+      <span class="term-path" aria-hidden="true">$</span>
+      <input class="cmdk-input" id="cmdk-input" type="text" role="combobox" aria-expanded="true"
+             aria-controls="cmdk-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"
+             placeholder="type a command">
+      <span class="caret" aria-hidden="true"></span>
+    </label>
+    <ul class="cmdk-list" id="cmdk-list" role="listbox" aria-label="Commands"></ul>
+    <p class="cmdk-note" id="cmdk-note" role="status" aria-live="polite">&uarr; &darr; move &middot; &#9166; run &middot; esc close</p>
+  </div>
+</dialog>
+
 <dialog class="shot-viewer" id="shot-viewer" aria-label="Screenshot viewer">
   <figure class="shot-viewer-inner">
     <img id="shot-viewer-img" alt="" decoding="async">
@@ -3648,6 +3807,182 @@ if (ham && menu) {
     document.documentElement.classList.remove('viewer-open');
     if (opener) opener.focus();
   });
+})();
+// ─── Command palette: the site answers to a shell ───
+(function(){
+  const dlg   = document.getElementById('cmdk');
+  const input = document.getElementById('cmdk-input');
+  const list  = document.getElementById('cmdk-list');
+  const note  = document.getElementById('cmdk-note');
+  // no dialog support? the hint button simply does nothing
+  if (!dlg || !input || !list || !note || typeof dlg.showModal !== 'function') return;
+
+  const HINT = '\u2191 \u2193 move \u00b7 \u23ce run \u00b7 esc close';
+
+  function say(text){
+    note.textContent = text;
+    note.classList.add('is-reply');
+  }
+  // every navigation reuses the page's own anchor glide instead of duplicating it
+  function go(id){
+    const link = document.querySelector('a[href="#' + id + '"]');
+    if (link) { link.click(); return; }
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }
+  function draft(){
+    setTimeout(function(){
+      const body = document.getElementById('draft-body');
+      if (body) body.focus({ preventScroll: true });
+    }, 720);
+  }
+
+  const commands = [
+    { name: 'hire',         keys: 'contact email message send', desc: 'open the draft, already addressed', run: function(){ go('contact'); draft(); } },
+    { name: 'work',         keys: 'projects matinee samples',   desc: 'what I have actually shipped',      run: function(){ go('projects'); } },
+    { name: 'experience',   keys: 'timeline jobs history',      desc: 'two years, the short version',      run: function(){ go('experience'); } },
+    { name: 'services',     keys: 'offer support help',         desc: 'what I do all day',                 run: function(){ go('services'); } },
+    { name: 'music',        keys: 'bandcamp album matinee',     desc: 'the player at the bottom',          run: function(){ go('music'); } },
+    { name: 'tools',        keys: 'stack software kit',         desc: 'the kit I keep sharp',              run: function(){ go('tools'); } },
+    { name: 'theme',        keys: 'dark light mode toggle',     desc: 'flip the paper',                    run: function(){ const t = document.querySelector('[data-theme-toggle]'); if (t) t.click(); } },
+    { name: 'resume',       keys: 'cv pdf download',            desc: 'open the PDF in a new tab',         run: function(){ window.open('./resume.pdf', '_blank', 'noopener'); } },
+    { name: 'top',          keys: 'home hero start',            desc: 'back to the prompt',                run: function(){ go('home'); } },
+    { name: 'whoami',       keys: 'about bio me',               desc: 'one line, no buzzwords',            stay: true,
+      run: function(){ say('IT support and VA in Manila, UTC+8. Two years of keeping other people\u2019s days from breaking.'); } },
+    { name: 'sudo hire-me', keys: 'please job offer yes',       desc: 'try it',                            stay: true,
+      run: function(){
+        say('permission granted \u2014 closing this shell and opening the draft.');
+        setTimeout(function(){ dlg.close(); go('contact'); draft(); }, 850);
+      } },
+    { name: 'coffee',       keys: 'brew espresso tired',        desc: 'not a real command',                stay: true,
+      run: function(){ say('brewing\u2026 no. Still just text. But thank you for asking.'); } }
+  ];
+
+  let matches = commands.slice();
+  let sel = 0;
+
+  function paint(){
+    list.textContent = '';
+    if (!matches.length) {
+      const empty = document.createElement('li');
+      empty.className = 'cmdk-empty';
+      empty.textContent = 'command not found: ' + input.value.trim();
+      list.appendChild(empty);
+      input.removeAttribute('aria-activedescendant');
+      return;
+    }
+    matches.forEach(function(cmd, i){
+      const li = document.createElement('li');
+      li.className = 'cmdk-item';
+      li.id = 'cmdk-opt-' + i;
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', i === sel ? 'true' : 'false');
+
+      const name = document.createElement('span');
+      name.className = 'cmdk-name';
+      name.textContent = cmd.name;
+      const desc = document.createElement('span');
+      desc.className = 'cmdk-desc';
+      desc.textContent = cmd.desc;
+
+      li.appendChild(name);
+      li.appendChild(desc);
+      li.addEventListener('click', function(){ sel = i; paint(); run(matches[sel]); });
+      list.appendChild(li);
+    });
+    input.setAttribute('aria-activedescendant', 'cmdk-opt-' + sel);
+    const active = list.children[sel];
+    if (active && active.scrollIntoView) active.scrollIntoView({ block: 'nearest' });
+  }
+
+  function filter(q){
+    const query = q.trim().toLowerCase();
+    matches = query
+      ? commands.filter(function(c){ return (c.name + ' ' + c.keys + ' ' + c.desc).toLowerCase().indexOf(query) !== -1; })
+      : commands.slice();
+    sel = 0;
+    note.classList.remove('is-reply');
+    note.textContent = matches.length ? HINT : 'nothing matches \u00b7 esc to close';
+    paint();
+  }
+
+  function run(cmd){
+    if (!cmd) return;
+    if (cmd.stay) { cmd.run(); return; }
+    dlg.close();
+    cmd.run();
+  }
+
+  function open(){
+    if (dlg.open) return;
+    input.value = '';
+    filter('');
+    dlg.showModal();
+    input.focus();
+  }
+
+  input.addEventListener('input', function(){ filter(input.value); });
+
+  dlg.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!matches.length) return;
+      sel = Math.max(0, Math.min(matches.length - 1, sel + (e.key === 'ArrowDown' ? 1 : -1)));
+      paint();
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      run(matches[sel]);
+    }
+  });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-cmdk-open]'), function(el){
+    el.addEventListener('click', open);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (dlg.open) return;
+    const el = e.target;
+    const typing = el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) { e.preventDefault(); open(); return; }
+    if (e.key === '/' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); open(); }
+  });
+})();
+// ─── Hero: the aura leans toward the pointer, a couple of dozen pixels ───
+(function(){
+  const hero = document.getElementById('home');
+  if (!hero || reduceMotion) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const MAX = 24;                       // enough to feel, not enough to notice
+  let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+
+  function step(){
+    cx += (tx - cx) * 0.1;
+    cy += (ty - cy) * 0.1;
+    const settled = Math.abs(tx - cx) < 0.2 && Math.abs(ty - cy) < 0.2;
+    if (settled) { cx = tx; cy = ty; }
+    hero.style.setProperty('--gx', cx.toFixed(1) + 'px');
+    hero.style.setProperty('--gy', cy.toFixed(1) + 'px');
+    // stop the loop once it has caught up: no idle rAF running forever
+    raf = settled ? 0 : requestAnimationFrame(step);
+  }
+
+  function aim(e){
+    const r = hero.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    tx = Math.max(-1, Math.min(1, nx)) * MAX;
+    ty = Math.max(-1, Math.min(1, ny)) * MAX;
+    if (!raf) raf = requestAnimationFrame(step);
+  }
+
+  hero.addEventListener('pointermove', aim, { passive: true });
+  hero.addEventListener('pointerleave', function(){
+    tx = 0; ty = 0;
+    if (!raf) raf = requestAnimationFrame(step);
+  }, { passive: true });
 })();
 </script>
 </body>
