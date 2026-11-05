@@ -2452,19 +2452,9 @@ html.viewer-open { overflow: hidden; }
 
 
 /* ══════════════════════════════════════════════════════════════════════
-   19. MOTION — printed, not animated
-   The old system had one gesture: everything faded up 26px. That sameness is
-   what reads as generated. This replaces it with three moves that belong to
-   the page — a heading prints down through a mask, a rule draws itself, a
-   print develops in the tray — plus staggered beats so a grid arrives as a
-   sequence rather than a slab. Nothing bounces, nothing spins, every effect
-   is one-shot, and all of it is gated behind .motion-ready, which the head
-   only adds when the visitor has not asked for reduced motion.
+   19. MOTION 
    ══════════════════════════════════════════════════════════════════════ */
 
-/* 1. section titles print downward. The mask is held at -20%/-12% on the
-   other three edges so italic overhang and descenders are never clipped in
-   the resting state — only the bottom edge travels. */
 .motion-ready .section-heading.reveal {
   transition:
     clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1),
@@ -2483,9 +2473,6 @@ html.viewer-open { overflow: hidden; }
   clip-path: inset(-20% -12% -20% -12%);
 }
 
-/* 2. the rail's top rule draws across as the heading arrives. Guarded by
-   @supports so a browser without :has keeps its static border, and scoped to
-   position:relative only on phones — the desktop rail must stay sticky. */
 @supports selector(:has(*)) {
   @media (max-width: 1023px) {
     .motion-ready .section-rail { position: relative; }
@@ -2504,7 +2491,7 @@ html.viewer-open { overflow: hidden; }
   .motion-ready .section-rail:has(.is-visible)::after { transform: scaleX(1); }
 }
 
-/* 3. the portrait develops: a print sliding out of the tray, top edge first */
+
 @keyframes print-develop {
   from { clip-path: inset(-2px -2px 100% -2px); }
   to   { clip-path: inset(-2px); }
@@ -2513,7 +2500,7 @@ html.viewer-open { overflow: hidden; }
   animation: print-develop 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.62s both;
 }
 
-/* 4. the contact window powers on the same way, once, when it scrolls in */
+
 .motion-ready .mail-window.reveal {
   transition:
     clip-path 0.85s cubic-bezier(0.16, 1, 0.3, 1),
@@ -2530,7 +2517,7 @@ html.viewer-open { overflow: hidden; }
   clip-path: inset(0);
 }
 
-/* 5. groups arrive in beats, not as one slab */
+
 .motion-ready .services-grid > .service-card:nth-child(2) { --reveal-delay: 70ms; }
 .motion-ready .services-grid > .service-card:nth-child(3) { --reveal-delay: 140ms; }
 .motion-ready .services-grid > .service-card:nth-child(4) { --reveal-delay: 210ms; }
@@ -2540,7 +2527,7 @@ html.viewer-open { overflow: hidden; }
 .motion-ready .timeline-item:nth-child(2) { --reveal-delay: 90ms; }
 .motion-ready .timeline-item:nth-child(3) { --reveal-delay: 180ms; }
 
-/* 6. each manual number locks in behind its card */
+
 @keyframes index-lock {
   from { opacity: 0; transform: translateY(-3px); }
   to   { opacity: 1; transform: none; }
@@ -2549,12 +2536,11 @@ html.viewer-open { overflow: hidden; }
   animation: index-lock 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.14s both;
 }
 
-/* 7. the button caret advances a step under the pointer */
+
 .btn-primary::before { transition: translate 0.25s var(--ease-soft); }
 .btn-primary:hover::before { translate: 2px 0; }
 
-/* 8. belt and braces — the .motion-ready gate already covers this, but a
-   heading must never be left clipped if that class ever leaks through */
+
 @media (prefers-reduced-motion: reduce) {
   .section-heading.reveal,
   .mail-window.reveal { clip-path: none !important; transform: none !important; }
@@ -2564,10 +2550,6 @@ html.viewer-open { overflow: hidden; }
 }
 
 
-/* 9. body copy travels less than the old 26px — a card should settle into
-   place, not fly in. Headings and the contact window keep their own masks
-   because those selectors are more specific, and .reveal--above (0,4,0)
-   still outranks this rule. */
 .motion-ready .reveal:not(.is-visible) { transform: translateY(14px); }
 
 
@@ -2577,11 +2559,6 @@ html.viewer-open { overflow: hidden; }
 
 /* ─── 20. COMPOSE — the message field is ruled paper ─── */
 
-/* The draft's rows are already ruled, but the message itself was a blank box.
-   Here it prints on ruled stock: one hairline per line box, drawn behind the
-   text, so what you type sits on the line instead of floating in white space.
-   background-attachment: local keeps the rules locked to the text when the
-   field scrolls. */
 .draft-msg { align-items: stretch; }
 .draft-body {
   height: 100%;
@@ -2722,13 +2699,9 @@ dialog.cmdk::backdrop {
   .cmdk-desc { font-size: 0.66rem; }
 }
 
-/* ─── 22. HERO — the aura leans toward the pointer ─── */
+/* ─── 22. HERO — performative aura ─── */
 
-/* The only pointer response on the site, and it adds nothing to the page: the
-   gradient that is already drifting shifts a couple of dozen pixels toward the
-   cursor. It runs on the independent `translate` property so aura-drift, which
-   owns `transform`, keeps turning underneath it. Nothing follows you down the
-   page, nothing appears, nothing glows. */
+
 .hero-glow { translate: var(--gx, 0px) var(--gy, 0px); }
 @media (prefers-reduced-motion: reduce) {
   .hero-glow { translate: none !important; }
@@ -2792,13 +2765,13 @@ dialog.cmdk::backdrop {
         <div class="hero-content">
           <div class="boot boot--1">
             <h1>Kerth Michael<br><em>Yadao</em></h1>
-            <p class="hero-desc">Hi, thanks for stopping by!</p>
+            <p class="hero-desc">thanks for stopping by!</p>
           </div>
 
           <dl class="term-spec">
             <div class="term-spec-row">
               <dt>System</dt>
-              <dd><span class="term-ok">[OK]</span> Portfolio v2.0 loaded</dd>
+              <dd><span class="term-ok">[OK]</span> Portfolio v2.3 loaded</dd>
             </div>
             <div class="term-spec-row">
               <dt>Role</dt>
@@ -2820,7 +2793,6 @@ dialog.cmdk::backdrop {
 
           <div class="hero-ctas boot boot--3">
         <a href="#services" class="btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-briefcase" style="width:16px;height:16px;"><path d="M2 8h2v12H2zm18 0h2v12h-2zM4 6h16v2H4zm0 14h16v2H4zM8 4h2v2H8zm2-2h4v2h-4zm4 2h2v2h-2z"/></svg>
           See What I Offer
         </a>
    <a href="./resume.pdf" class="btn-ghost" target="_blank" rel="noopener noreferrer">
@@ -2863,13 +2835,13 @@ dialog.cmdk::backdrop {
   <div class="container has-rail">
     <div class="section-rail">
   <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">cat ./about.txt</span></p>
-      <h2 class="section-heading reveal">From <em>corporate</em><br>to your remote team</h2>
+      <h2 class="section-heading reveal"><em>Hello!</em></h2>
   </div>
     <div class="about-grid">
       <div class="reveal">
         <div class="about-body">
           <p>I'm <strong>Kerth Michael Yadao</strong>, a professional based in Manila, Philippines. Over the past two years at <strong>one of the leading real estate technology companies globally</strong> — I've gone from inbound calls to handling escalated cases directly with management.</p>
-          <p>I'm transitioning into remote work because I want to explore more with international clients, grow beyond the call center environment, and apply what I know in a more flexible, results-driven setup.</p>
+          <p>I'm transitioning into remote work because I want to explore more opportunities and go outside my comfort zone, and apply what I know in a more flexible, results-driven setup.</p>
         </div>
         <div class="cert-block">
           <div class="cert-block-label">Certifications</div>
@@ -2988,18 +2960,15 @@ dialog.cmdk::backdrop {
       <div class="tool-group reveal">
         <div class="tool-group-label">CRM & Support</div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
           <span class="tool-name">Salesforce</span>
           <span class="tool-level">Proficient</span>
         </div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-phone" style="width:16px;height:16px;"><path d="M4 1h5v2H4zm5 2h2v4H9zM7 7h2v4H7zm-3 5h2v2H4zM2 3h2v9H2zm7 8h2v2H9zm2 2h2v2h-2zm2 2h4v2h-4zm4-2h4v2h-4zm4 2h2v5h-2zM6 14h2v2H6zm2 2h2v2H8zm2 2h2v2h-2zm2 2h9v2h-9z"/></svg></div>
           <span class="tool-name">Genesys Cloud</span>
           <span class="tool-level">Proficient</span>
         </div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-building" style="width:16px;height:16px;"><path d="M5 2h14v2H5zm0 18h14v2H5zM3 4h2v16H3zm16 0h2v16h-2zM7 6h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm-1 4h4v2h-4zm5-4h2v2h-2z"/></svg></div>
-          <span class="tool-name">Propery Management Sofwares</span>
+          <span class="tool-name">Property Management Software</span>
           <span class="tool-level">Experienced</span>
         </div>
       </div>
@@ -3007,14 +2976,12 @@ dialog.cmdk::backdrop {
       <div class="tool-group reveal">
         <div class="tool-group-label">Productivity & Learning</div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
-          <span class="tool-name">Microsoft 365 & productivity apps</span>
+          <span class="tool-name">Microsoft 365</span>
           <span class="tool-level">Comfortable</span>
         </div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-grid-2x2-2" style="width:16px;height:16px;"><path d="M4 2h16v2H4zM2 4h2v16H2zm2 7h16v2H4zm16-7h2v16h-2z M11 4h2v18h-2z M4 20h16v2H4z"/></svg></div>
           <span class="tool-name">Automation Tools</span>
-          <span class="tool-level">Currently Learning</span>
+          <span class="tool-level">Comfortable</span>
         </div>
 
       </div>
@@ -3022,17 +2989,14 @@ dialog.cmdk::backdrop {
       <div class="tool-group reveal">
         <div class="tool-group-label">Linux & Self-Hosting</div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-terminal" style="width:16px;height:16px;"><path d="M4 2h16v2H4zm0 18h16v2H4zM2 4h2v16H2zm18 0h2v16h-2zM6 16h2v2H6zm2-2h2v2H8zm-2-2h2v2H6z"/></svg></div>
           <span class="tool-name">Linux (Ubuntu) & Bash</span>
           <span class="tool-level">Comfortable</span>
         </div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-box" style="width:16px;height:16px;"><path d="M14 4h4v2h-4zm-4-2h4v2h-4zM6 8h4v2H6zm0 10h4v2H6zm4-8h4v2h-4zm0 10h4v2h-4zm4-12h4v2h-4zm0 10h4v2h-4zM6 4h4v2H6zM2 6h4v2H2zm0 10h4v2H2zM18 6h4v2h-4zm0 10h4v2h-4z M2 6h2v12H2zm18 0h2v12h-2zm-8 6h2v8h-2z"/></svg></div>
           <span class="tool-name">Docker</span>
           <span class="tool-level">Hands-On</span>
         </div>
         <div class="tool-item">
-          <div class="tool-logo"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-share" style="width:16px;height:16px;"><path d="M20 22H4V20H20V22ZM4 20H2V14H4V20ZM22 20H20V14H22V20ZM13 4H15V6H17V8H13V18H11V8H7V6H9V4H11V2H13V4ZM9 14H4V12H9V14ZM20 14H15V12H20V14Z"/></svg></div>
           <span class="tool-name">HTTP Forwarding</span>
           <span class="tool-level">Hands-On</span>
         </div>
@@ -3087,7 +3051,7 @@ dialog.cmdk::backdrop {
             <span class="tag">Genesys Cloud</span>
             <span class="tag">Salesforce</span>
             <span class="tag">Appointment Setting</span>
-            <span class="tag">Maintenance Coordination</span>
+            <span class="tag">Maintenance Dispatch</span>
             <span class="tag">Microsoft 365</span>
             <span class="tag">SharePoint</span>
           </div>
@@ -3104,7 +3068,6 @@ dialog.cmdk::backdrop {
           <div class="tag-row">
             <span class="tag">Salesforce</span>
             <span class="tag">Chat Support</span>
-            <span class="tag">BPO</span>
           </div>
         </div>
       </div>
@@ -3120,27 +3083,25 @@ dialog.cmdk::backdrop {
   <p class="eyebrow reveal"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span> <span class="term-cmd-text">ls ./projects</span></p>
       <h2 class="section-heading reveal">Things I <em>build</em></h2>
   </div>
-    <p class="samples-note reveal">Two projects running on hardware I own and control. One keeps my data off other people's servers; the other keeps a 2012 phone useful.</p>
+    <p class="samples-note reveal">some fun side projects i currently do *hopefully would also get me a job.</p>
     <div class="samples-grid">
 
       <div class="sample-card reveal">
         <div class="sample-header">
-          <div class="sample-header-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-server" style="width:18px;height:18px;"><path d="M6 7h4v2H6zm0 8h4v2H6zM2 5h2v14H2zm18 0h2v14h-2zM4 19h16v2H4zM4 3h16v2H4zm0 8h16v2H4z"/></svg></div>
           <div>
-            <div class="sample-type">Infrastructure Project</div>
+            <div class="sample-type">Homelab Server</div>
             <div class="sample-title">Self-Hosted Ubuntu Server Running 15+ Docker Services</div>
           </div>
         </div>
         <div class="sample-body">
-          <p>I administer an Ubuntu Linux server running 15+ containerized services through Portainer — photo management, cloud storage, music streaming, password management, DNS-level ad blocking, and uptime monitoring. Caddy handles reverse proxying across every service, Tailscale gives me secure remote access from anywhere, and I split persistent storage across an internal SSD and an external HDD with a mix of read-only and read/write access controls.</p>
+          <p>I administer an Ubuntu Linux server running 15+ containerized services through Portainer — photo management, cloud storage, music streaming, password management, DNS-level ad blocking, and uptime monitoring. Caddy handles reverse proxying across every service, Tailscale gives me secure remote access from anywhere.</p>
           <div class="stack-status-grid">
             <span class="status-chip"><span class="status-chip-dot"></span>Immich</span>
             <span class="status-chip"><span class="status-chip-dot"></span>Nextcloud</span>
             <span class="status-chip"><span class="status-chip-dot"></span>Navidrome</span>
             <span class="status-chip"><span class="status-chip-dot"></span>Vaultwarden</span>
             <span class="status-chip"><span class="status-chip-dot"></span>AdGuard Home</span>
-            <span class="status-chip"><span class="status-chip-dot"></span>Portainer</span>
-            <span class="status-chip"><span class="status-chip-dot"></span>Glances</span>
+            <span class="status-chip"><span class="status-chip-dot"></span>Openclaw</span>
           </div>
           <div class="tag-row">
             <span class="tag">Docker</span>
@@ -3156,15 +3117,13 @@ dialog.cmdk::backdrop {
 
       <div class="sample-card reveal">
         <div class="sample-header">
-          <div class="sample-header-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false" class="pa pa-clapperboard" style="width:18px;height:18px;"><path d="M4 3h16v2H4zm0 6h16v2H4zM2 5h2v14H2zm18 0h2v14h-2zM4 19h16v2H4zM18 7h-2v2h2zm-8 0H8v2h2zm6-2h-2v2h2zM8 5H6v2h2z"/></svg></div>
           <div>
             <div class="sample-type">iOS 6 App — Work in Progress</div>
-            <div class="sample-title">Matinee — a Letterboxd Client for iOS 6</div>
+            <div class="sample-title">Matinee</div>
           </div>
         </div>
         <div class="sample-body">
-          <p>A native Letterboxd client for iOS 6. Browse your diary, open a film, and log what you've watched with a rating, a review, a rewatch or a like — running as an app on a 2012 iPhone.</p>
-          <p>A fun side project, and a good excuse to keep an old phone in use.</p>
+          <p>A native Letterboxd client for iOS 6.</p>
           <div class="tag-row">
             <span class="tag">Objective-C</span>
             <span class="tag">iOS 6</span>
@@ -3253,8 +3212,8 @@ dialog.cmdk::backdrop {
     <div class="mail-body">
       <div class="mail-intro">
         <p class="eyebrow"><span class="term-path" aria-hidden="true">kerth@portfolio:~$</span></p>
-        <h2 class="section-heading">Ready to <em>start?</em></h2>
-        <p class="mail-lead">Write it here and Send hands the message to your mail app, already addressed. No form endpoint, no server, nothing stored.</p>
+        <h2 class="section-heading">Let's <em>start!</em></h2>
+        <p class="mail-lead">Write it here and Send hands the message to your mail app, already addressed.</p>
         <div class="mail-direct">
           <a class="contact-btn" href="https://www.linkedin.com/in/kerthfyadao" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a class="contact-btn" href="https://www.onlinejobs.ph/jobseekers/info/4385588" target="_blank" rel="noopener noreferrer">OnlineJobs.ph</a>
